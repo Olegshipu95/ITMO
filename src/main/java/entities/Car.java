@@ -1,5 +1,12 @@
 package entities;
-public class Car {
-    private Boolean cool; //Поле может быть null
 
+import lombok.Getter;
+
+public class Car {
+
+    public Car(boolean a){
+        cool = a;
+    }
+    @Getter
+    private Boolean cool; //Поле может быть null
 }

@@ -4,5 +4,5 @@ import entities.Mood;
 import entities.WeaponType;
 
 public abstract class AbstractCommand {
-    public abstract void function();
+    public abstract boolean function();
     }

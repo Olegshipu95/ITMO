@@ -4,9 +4,7 @@ import static collections.CommandCollection.commandColl;
 
 public class Help extends AbstractCommand{
     @Override
-    public void function() {
-        for(AbstractCommand a:commandColl){
-            System.out.println(a);
-        }
+    public boolean function() {
+        return true;
     }
 }

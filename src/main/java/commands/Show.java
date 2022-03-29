@@ -2,7 +2,7 @@ package commands;
 
 public class Show extends AbstractCommand{
     @Override
-    public void function() {
-
+    public boolean function() {
+        return true;
     }
 }
