@@ -1,5 +1,7 @@
 package collections;
 
+import org.apache.commons.csv.CSVParser;
+
 public class Parser {
     public static String[][] substringsOfStream() {
 

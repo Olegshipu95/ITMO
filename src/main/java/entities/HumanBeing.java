@@ -3,9 +3,10 @@ package entities;
 import collections.IdCollection;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Getter
 @EqualsAndHashCode(of = {"id" , "name"})
-@RequiredArgsConstructor
 public class HumanBeing {
     public HumanBeing(int id,String name, Coordinates coordinates, boolean realHero,
                       boolean hasToothpick, Float impactSpeed, Integer minutesOfWaiting,WeaponType weaponType, Mood mood, Car car){
@@ -20,6 +21,8 @@ public class HumanBeing {
         this.mood = mood;
         this.car = car;
         IdCollection.idCollection.add(id);
+        creationDate = LocalDateTime.now();
+        IdCollection.idCollection.add(id);
     }
     @NonNull
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
@@ -27,7 +30,7 @@ public class HumanBeing {
     private String name; //Поле не может быть null, Строка не может быть пустой
     @NonNull
     private Coordinates coordinates; //Поле не может быть null
-    private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    private LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     @NonNull
     private boolean realHero;
     @NonNull
@@ -43,8 +46,8 @@ public class HumanBeing {
     @NonNull
     private Car car; //Поле не может быть null
 
-    @Override
-    public String toString() {
+
+    public String csvToString() {
         return id +
                 "," + name + "," +
                 + coordinates.getX() +
@@ -55,5 +58,22 @@ public class HumanBeing {
                 "," + weaponType +
                 "," + mood +
                 "," + car.getCool();
+    }
+
+    @Override
+    public String toString() {
+        return "HumanBeing{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", coordinates=" + coordinates +
+                ", creationDate=" + creationDate +
+                ", realHero=" + realHero +
+                ", hasToothpick=" + hasToothpick +
+                ", impactSpeed=" + impactSpeed +
+                ", minutesOfWaiting=" + minutesOfWaiting +
+                ", weaponType=" + weaponType +
+                ", mood=" + mood +
+                ", car=" + car +
+                '}';
     }
 }

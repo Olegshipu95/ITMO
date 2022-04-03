@@ -1,49 +1,28 @@
 package collections;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
-import commands.*;
+
+import commands.system.*;
 //import lombok.var;
 
 public class CommandCollection {
-    public static HashMap<AbstractCommand, Boolean> commandColl = new HashMap<>();
+    public static HashMap<String, Boolean> commandColl = new HashMap<>();
 
     public static void commandManager() {
-
-        /*Collections.addAll(commandColl, (add, averageOfMinutesOfWaiting, clear,
-                execute_script, exit, help, history, info, printAscending, remove_by_id, remove_at, remove_lower,
-                save, show, sumOfMinutesOfWaiting, updateId);*/
-        Add add = new Add();
-        commandColl.put(add,add.function());
-        AverageOfMinutesOfWaiting averageOfMinutesOfWaiting = new AverageOfMinutesOfWaiting();
-        commandColl.put(add,add.function());
-        Clear clear = new Clear();
-        commandColl.put(add,add.function());
-        Execute_script execute_script = new Execute_script();
-        commandColl.put(add,add.function());
-        Exit exit = new Exit();
-        commandColl.put(add,add.function());
-        Help help = new Help();
-        commandColl.put(add,add.function());
-        History history = new History();
-        commandColl.put(add,add.function());
-        Info info = new Info();
-        commandColl.put(add,add.function());
-        PrintAscending printAscending = new PrintAscending();
-        commandColl.put(add,add.function());
-        Remove_by_id remove_by_id = new Remove_by_id();
-        commandColl.put(add,add.function());
-        RemoveAt remove_at = new RemoveAt();
-        commandColl.put(add,add.function());
-        RemoveLower remove_lower = new RemoveLower();
-        commandColl.put(add,add.function());
-        Save save = new Save();
-        commandColl.put(add,add.function());
-        Show show = new Show();
-        commandColl.put(add,add.function());
-        SumOfMinutesOfWaiting sumOfMinutesOfWaiting = new SumOfMinutesOfWaiting();
-        commandColl.put(add,add.function());
-        UpdateId updateId = new UpdateId();
-        commandColl.put(add,add.function());
+        commandColl.put("add",new Add().function());
+        commandColl.put("averageOfMinutes",new AverageOfMinutesOfWaiting().function());
+        commandColl.put("clear",new Clear().function());
+        commandColl.put("execute_script",new Execute_script().function());
+        commandColl.put("exit",new Exit().function());
+        commandColl.put("help",new Help().function());
+        commandColl.put("history",new History().function());
+        commandColl.put("info",new Info().function());
+        commandColl.put("printAscending",new PrintAscending().function());
+        commandColl.put("remove_by_id",new Remove_by_id().function());
+        commandColl.put("remove_at",new RemoveAt().function());
+        commandColl.put("remove_lower",new RemoveLower().function());
+        commandColl.put("save",new Save().function());
+        commandColl.put("show",new Show().function());
+        commandColl.put("sumOfMinutesOfWaiting",new SumOfMinutesOfWaiting().function());
+        commandColl.put("updateId",new UpdateId().function());
     }
 }

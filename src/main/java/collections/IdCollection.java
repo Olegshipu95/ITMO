@@ -10,7 +10,8 @@ public class IdCollection {
     public static int createId(){
         int id;
         while(true) {
-            id = (int) (Math.random() * 1000 + 1000);
+            Date md = new Date();
+            id = (int) (md.getTime()%100000);
             if(idCollection.contains(id))continue;
             break;
         }
