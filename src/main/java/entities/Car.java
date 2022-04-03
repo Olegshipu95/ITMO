@@ -3,7 +3,6 @@ package entities;
 import lombok.Getter;
 
 public class Car {
-
     public Car(boolean a){
         cool = a;
     }

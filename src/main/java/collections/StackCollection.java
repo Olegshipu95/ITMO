@@ -15,7 +15,8 @@ public class StackCollection {
                 line.append(substr[i][j] + "\n");
             }
 
-            Scanner scanner = new Scanner(line.toString());
+            Scanner scanner = new Scanner(line.toString().trim());
+            scanner.useDelimiter("\n");
             int id;
             String name;
             Integer y, minutesOfWait;
@@ -82,6 +83,7 @@ public class StackCollection {
             entitiesCollection.push(obj);
 
         }
+
         return entitiesCollection;
     }
     public static Stack<HumanBeing> cloneCollection(Stack<HumanBeing> a){

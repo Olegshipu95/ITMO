@@ -12,7 +12,8 @@ public class Help extends AbstractCommand {//Сделана полностью
     public boolean function() {
         try {
             Set<String> keys = commandColl.keySet();
-            System.out.println("Команды: ");
+            System.out.println("Команды: "
+                    + keys);
             return true;
         }
         catch (Exception e){

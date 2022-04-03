@@ -1,4 +1,4 @@
 package Exceptions;
 
-public class DoesNotExist {
+public class DoesNotExist  extends Exception{
 }
