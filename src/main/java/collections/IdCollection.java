@@ -11,7 +11,7 @@ public class IdCollection {
         int id;
         while(true) {
             Date md = new Date();
-            id = (int) (md.getTime()%100000);
+            id = (int) (md.getTime()/100000);
             if(idCollection.contains(id))continue;
             break;
         }
