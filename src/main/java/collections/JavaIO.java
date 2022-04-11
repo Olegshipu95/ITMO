@@ -58,13 +58,13 @@ public class JavaIO {
     public static void CSVCreateObject() {
         Scanner scanner = new Scanner(System.in);
         String outputFileName = new File("").getAbsolutePath() + File.separator + "/src/main/resources/text2.txt";
-        String relative = "C:\\Users\\Олеженька\\IdeaProjects\\ITMO\\src\\main\\resources\\text2.txt";
+        String relative = "src\\main\\resources";
         StringBuilder line = new StringBuilder();
         CSVParser parser;
         List<CSVRecord> parserlocal;
         while (true) {
             try {
-                File path = new File("C:\\Users\\Олеженька\\IdeaProjects\\ITMO\\src\\main\\resources","text2.txt");
+                File path = new File(relative,"text2.txt");
                 parser = CSVParser.parse(path, Charset.defaultCharset(), CSVFormat.RFC4180);
                 parserlocal = parser.getRecords();
                 for (CSVRecord record : parserlocal) {

@@ -264,8 +264,8 @@ public class WriteTheValues {
 
             minutesOfWait = Integer.valueOf(arguments.get(12));
 
-            mood = Mood.valueOf(arguments.get(13));
-            weaponType = WeaponType.valueOf(arguments.get(14));
+            mood = Mood.valueOf(arguments.get(14));
+            weaponType = WeaponType.valueOf(arguments.get(13));
             cool = Boolean.valueOf(arguments.get(15));
         } catch (NumberFormatException e) {
             return false;
