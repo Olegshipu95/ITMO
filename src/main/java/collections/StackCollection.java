@@ -1,6 +1,8 @@
 package collections;
 import entities.*;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -87,7 +89,7 @@ public class StackCollection {
         return entitiesCollection;
     }
     public static Stack<HumanBeing> cloneCollection(Stack<HumanBeing> a){
-        a = entitiesCollection;
+        Collections.copy(a,StackCollection.entitiesCollection);
         return a;
     }
 }

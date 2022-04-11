@@ -6,7 +6,6 @@ public class Parser {
     public static String[][] substringsOfStream() {
 
         if (JavaIO.readFile() != "") {
-
             String[] strings = JavaIO.readFile().split("\n");
             String[][] parse = new String[strings.length][];
             int i = 0;
@@ -15,7 +14,8 @@ public class Parser {
                 i++;
             }
             return parse;
-        } else return null;
+        } else
+            return null;
     }
 
 

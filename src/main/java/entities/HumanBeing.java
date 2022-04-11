@@ -24,26 +24,32 @@ public class HumanBeing {
         creationDate = LocalDateTime.now();
         IdCollection.idCollection.add(id);
     }
-    @NonNull
+    public HumanBeing(int id,String name, Coordinates coordinates, LocalDateTime local, boolean realHero,
+                      boolean hasToothpick, Float impactSpeed, Integer minutesOfWaiting,WeaponType weaponType, Mood mood, Car car){
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.realHero = realHero;
+        this.hasToothpick = hasToothpick;
+        this.impactSpeed = impactSpeed;
+        this.minutesOfWaiting = minutesOfWaiting;
+        this.weaponType = weaponType;
+        this.mood = mood;
+        this.car = car;
+        IdCollection.idCollection.add(id);
+        creationDate = local;
+        IdCollection.idCollection.add(id);
+    }
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
-    @NonNull
     private String name; //Поле не может быть null, Строка не может быть пустой
-    @NonNull
     private Coordinates coordinates; //Поле не может быть null
     private LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    @NonNull
     private boolean realHero;
-    @NonNull
     private boolean hasToothpick;
-    @NonNull
     private Float impactSpeed; //Поле может быть null
-    @NonNull
     private Integer minutesOfWaiting; //Поле может быть null
-    @NonNull
     private WeaponType weaponType; //Поле может быть null
-    @NonNull
     private Mood mood; //Поле может быть null
-    @NonNull
     private Car car; //Поле не может быть null
 
 

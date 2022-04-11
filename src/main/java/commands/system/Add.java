@@ -11,8 +11,18 @@ import java.util.Scanner;
 public class Add extends AbstractCommand {//Сделан полностью
     @Override
     public boolean function() {
+        System.out.println("Эта команда не работает с аргументами");
+       return false;
+    }
+
+    @Override
+    public boolean function(String[] arguments) {
+        if(arguments.length != 10){
+            System.out.println("Недостаточно аргументов, повторите команду.");
+            return false;
+        }
         try {
-            commands.WriteTheValues.createObject();
+            commands.WriteTheValues.createObject(arguments);
             return true;
         } catch (Exception e) {
             return false;

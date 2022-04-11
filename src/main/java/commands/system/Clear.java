@@ -10,12 +10,16 @@ public class Clear extends AbstractCommand {//Сделана полностью
     @Override
     public boolean function() {
         try {
-            Stack<HumanBeing> local = new Stack<>();
-            StackCollection.entitiesCollection = local;
+            StackCollection.entitiesCollection.clear();
             return true;
         }
         catch (Exception e){
             return false;
         }
+    }
+    @Override
+    public boolean function(String[] arguments) {
+        System.out.println("Эта команда без аргументов");
+        return false;
     }
 }

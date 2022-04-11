@@ -25,4 +25,9 @@ public class SumOfMinutesOfWaiting extends AbstractCommand {//Готова по�
             return false;
         }
     }
+
+    @Override
+    public boolean function(String[] arguments) {
+        return false;
+    }
 }

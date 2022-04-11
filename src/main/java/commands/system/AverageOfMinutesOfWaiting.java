@@ -26,4 +26,9 @@ public class AverageOfMinutesOfWaiting extends AbstractCommand {//Готова �
             return false;
         }
     }
+    @Override
+    public boolean function(String[] arguments) {
+        System.out.println("Эта команда без аргументов2");
+        return false;
+    }
 }

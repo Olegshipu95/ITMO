@@ -15,4 +15,9 @@ public class History extends AbstractCommand {//Сделана полность�
             return false;
         }
     }
+    @Override
+    public boolean function(String[] arguments) {
+        System.out.println("Эта команда без аргументов, повторите ввод");
+        return false;
+    }
 }

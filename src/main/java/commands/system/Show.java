@@ -20,4 +20,9 @@ public class Show extends AbstractCommand {//Сделана полностью
             return false;
         }
     }
+
+    @Override
+    public boolean function(String[] arguments) {
+        return false;
+    }
 }
