@@ -3,7 +3,6 @@ import java.util.HashMap;
 
 import commands.AbstractCommand;
 import commands.system.*;
-//import lombok.var;
 
 public class CommandCollection {
     public static HashMap<String, AbstractCommand> commandColl = new HashMap<>();

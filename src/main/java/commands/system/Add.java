@@ -18,7 +18,7 @@ public class Add extends AbstractCommand {//Сделан полностью
     @Override
     public boolean function(String[] arguments) {
         if(arguments.length != 10){
-            System.out.println("Недостаточно аргументов, повторите команду.");
+            System.out.println("Неправильное количество аргументов(их должно быть 10), повторите команду.");
             return false;
         }
         try {

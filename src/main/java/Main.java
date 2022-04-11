@@ -17,6 +17,7 @@ public class Main {
         Set<String> keys = CommandCollection.commandColl.keySet();
         String strArgs;
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Для списка команд впишите команду help");
         while (true) {
             while (true) {
                 System.out.println("Введите, пожалуйста, команду: ");

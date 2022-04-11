@@ -2,7 +2,6 @@ package commands.system;
 
 import collections.CommandCollection;
 import commands.AbstractCommand;
-import lombok.var;
 
 import java.util.Map;
 import java.util.Set;

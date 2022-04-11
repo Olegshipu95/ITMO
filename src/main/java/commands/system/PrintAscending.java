@@ -17,7 +17,7 @@ public class PrintAscending extends AbstractCommand {//ВРоде сделан �
                 }
             });
             for (HumanBeing obj:StackCollection.entitiesCollection) {
-                System.out.println(obj.toString());
+                System.out.println(obj.getId());
             }
             return true;
         }

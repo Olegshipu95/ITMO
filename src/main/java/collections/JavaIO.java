@@ -6,6 +6,8 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
@@ -38,18 +40,17 @@ public class JavaIO {
     }
 
     public static void writeToFile(String example) {
+        File file = new File(new File("").getAbsolutePath() + File.separator + "/src/main/resources/text.txt");
+        Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("Впишите путь к файлу");
-            Scanner scanner = new Scanner(System.in);
             try {
-                File file = new File(scanner.nextLine());
                 FileOutputStream fileOutputStream = new FileOutputStream(file, true);
                 fileOutputStream.write(example.getBytes());
                 fileOutputStream.close();
                 break;
             } catch (IOException e) {
                 System.out.println("Проблема с файлом, впишите новый файл");
-                continue;
+                file = new File(scanner.nextLine());
             }
         }
     }
@@ -57,12 +58,14 @@ public class JavaIO {
     public static void CSVCreateObject() {
         Scanner scanner = new Scanner(System.in);
         String outputFileName = new File("").getAbsolutePath() + File.separator + "/src/main/resources/text2.txt";
+        String relative = "C:\\Users\\Олеженька\\IdeaProjects\\ITMO\\src\\main\\resources\\text2.txt";
         StringBuilder line = new StringBuilder();
         CSVParser parser;
         List<CSVRecord> parserlocal;
         while (true) {
             try {
-                parser = CSVParser.parse(outputFileName, CSVFormat.RFC4180);
+                File path = new File("C:\\Users\\Олеженька\\IdeaProjects\\ITMO\\src\\main\\resources","text2.txt");
+                parser = CSVParser.parse(path, Charset.defaultCharset(), CSVFormat.RFC4180);
                 parserlocal = parser.getRecords();
                 for (CSVRecord record : parserlocal) {
                     if(record.size()==16){

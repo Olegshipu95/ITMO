@@ -11,9 +11,12 @@ public class Show extends AbstractCommand {//Сделана полностью
     public boolean function() {
         try {
             Stack<HumanBeing> clone = new Stack<HumanBeing>();
-            for (int i = (StackCollection.cloneCollection(clone)).size(); i>0; i--) {
-                System.out.println(clone.pop().toString());
+            while (StackCollection.entitiesCollection.size()>0){
+                HumanBeing local = StackCollection.entitiesCollection.pop();
+                System.out.println(local.toString());
+                clone.push(local);
             }
+            StackCollection.entitiesCollection = clone;
             return true;
         }
         catch (Exception e){

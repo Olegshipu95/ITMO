@@ -9,11 +9,11 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class WriteTheValues {
-    static Scanner scanner = new Scanner(System.in);
 
 
     public static boolean checkTheCorrect(boolean type, String advice) {
         while (true) {
+            Scanner scanner = new Scanner(System.in);
             try {
                 System.out.println(advice);
                 type = scanner.nextBoolean();
@@ -27,6 +27,7 @@ public class WriteTheValues {
 
     public static Float checkTheCorrect(Float type, String advice) {
         while (true) {
+            Scanner scanner = new Scanner(System.in);
             try {
                 System.out.println(advice);
                 type = scanner.nextFloat();
@@ -40,6 +41,7 @@ public class WriteTheValues {
 
     public static Integer checkTheCorrect(int type, String advice) {
         while (true) {
+            Scanner scanner = new Scanner(System.in);
             try {
                 System.out.println(advice);
                 type = scanner.nextInt();
@@ -53,6 +55,7 @@ public class WriteTheValues {
 
     public static String checkTheCorrect(String type) {
         while (true) {
+            Scanner scanner = new Scanner(System.in);
             try {
                 System.out.println("Введите имя объекта: ");
                 type = scanner.nextLine();
@@ -66,6 +69,7 @@ public class WriteTheValues {
 
     public static Mood checkTheCorrect(Mood type) {
         while (true) {
+            Scanner scanner = new Scanner(System.in);
             try {
                 System.out.println("Введите значение из тех, которые представлены сейчас перед вами: ");
                 Mood[] obj = Mood.values();
@@ -85,6 +89,7 @@ public class WriteTheValues {
 
     public static WeaponType checkTheCorrect(WeaponType type) {
         while (true) {
+            Scanner scanner = new Scanner(System.in);
             try {
                 System.out.println("Введите значение из тех, которые представлены сейчас перед вами: ");
                 WeaponType[] obj = WeaponType.values();
@@ -144,12 +149,12 @@ public class WriteTheValues {
         }
         minutesOfWait = Integer.valueOf(args[6]);
         try {
-            mood = Mood.valueOf(args[7]);
+            mood = Mood.valueOf(args[8]);
         } catch (IllegalArgumentException ex) {
             mood = checkTheCorrect(mood);
         }
         try {
-            weaponType = WeaponType.valueOf(args[8]);
+            weaponType = WeaponType.valueOf(args[7]);
         } catch (IllegalArgumentException ex) {
             weaponType = checkTheCorrect(weaponType);
         }
@@ -208,12 +213,12 @@ public class WriteTheValues {
             minutesOfWait = checkTheCorrect(Integer.valueOf(0), "Введите значение Integer для координаты minutesOfWait");
         }
         try {
-            mood = Mood.valueOf(args[7]);
+            mood = Mood.valueOf(args[8]);
         } catch (IllegalArgumentException ex) {
             mood = checkTheCorrect(mood);
         }
         try {
-            weaponType = WeaponType.valueOf(args[8]);
+            weaponType = WeaponType.valueOf(args[7]);
         } catch (IllegalArgumentException ex) {
             weaponType = checkTheCorrect(weaponType);
         }
