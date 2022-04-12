@@ -8,4 +8,11 @@ public class Car {
     }
     @Getter
     private Boolean cool; //Поле может быть null
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "cool=" + cool +
+                '}';
+    }
 }
