@@ -1,0 +1,3 @@
+Collection type: Humanbeing
+Items: 11(id,name,coordinates,creationDate,realHero,
+hasToothpick,impactSpeed,minitesOfWaiting,weaponType,mood,car)
