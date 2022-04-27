@@ -5,6 +5,7 @@
 
 package commands.system;
 
+import Exceptions.StupidUserException;
 import collections.JavaIO;
 import collections.StackCollection;
 import commands.AbstractCommand;
@@ -26,7 +27,8 @@ public class Save extends AbstractCommand {
             }
 
             return true;
-        } catch (Exception var3) {
+        }
+        catch (Exception var3) {
             return false;
         }
     }

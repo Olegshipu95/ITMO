@@ -14,12 +14,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.*;
-
+/**
+ * this class is using for communication with files(reading and writing)
+ */
 public class JavaIO {
     public JavaIO() {
     }
 
-    public static void writeToFile(String example) {
+    /**
+     * this method writes a string to file
+     * @param example
+     */
+    public static void writeToFile(String example) throws StupidUserException{
         String var10002 = (new File("")).getAbsolutePath();
         File file = new File(var10002 + File.separator + "/src/main/resources/text.txt");
         Scanner scanner = new Scanner(System.in);
@@ -32,6 +38,9 @@ public class JavaIO {
                 return;
             } catch (IOException var4) {
                 System.out.println("Problem with the file, please enter a new file");
+                if (!scanner.hasNext()) {
+                    throw new StupidUserException();
+                }
                 file = new File(scanner.nextLine());
             }
         }
