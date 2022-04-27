@@ -12,9 +12,6 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 
 public class Help extends AbstractCommand {
-    public Help() {
-    }
-
     public boolean function() {
         try {
             Iterator var1 = CommandCollection.commandInfo.entrySet().iterator();

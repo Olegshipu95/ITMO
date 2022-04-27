@@ -10,8 +10,6 @@ import collections.StackCollection;
 import commands.AbstractCommand;
 
 public class Info extends AbstractCommand {
-    public Info() {
-    }
 
     public boolean function() {
         try {

@@ -15,8 +15,6 @@ import java.time.DateTimeException;
 import java.time.LocalDateTime;
 
 public class WriteTheValues {
-    public WriteTheValues() {
-    }
 
     public static boolean createObject(String[] args) throws StupidUserException {
         int id = IdCollection.createId();

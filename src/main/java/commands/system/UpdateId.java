@@ -17,9 +17,6 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class UpdateId extends AbstractCommand {
-    public UpdateId() {
-    }
-
     public boolean function() {
         System.out.println("This command only works with arguments");
         return true;
@@ -87,8 +84,6 @@ public class UpdateId extends AbstractCommand {
         } catch (StupidUserException var8) {
             System.exit(1);
             return true;
-        } catch (Exception var9) {
-            return false;
         }
     }
 }

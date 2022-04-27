@@ -13,7 +13,4 @@ public class StackCollection {
      * It is stack collection with {@link HumanBeing#HumanBeing(int, String, Coordinates, LocalDateTime, boolean, boolean, Float, Integer, WeaponType, Mood, Car)} objects
      */
     public static Stack<HumanBeing> entitiesCollection = new Stack();
-
-    public StackCollection() {
-    }
 }

@@ -12,9 +12,6 @@ import entities.HumanBeing;
 import java.util.Stack;
 
 public class SumOfMinutesOfWaiting extends AbstractCommand {
-    public SumOfMinutesOfWaiting() {
-    }
-
     public boolean function() {
         try {
             Long sum = 0L;
@@ -34,6 +31,7 @@ public class SumOfMinutesOfWaiting extends AbstractCommand {
     }
 
     public boolean function(String[] arguments) {
+        System.out.println("This command is working only with args");
         return false;
     }
 }

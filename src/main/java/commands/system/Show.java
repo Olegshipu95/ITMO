@@ -12,9 +12,6 @@ import entities.HumanBeing;
 import java.util.Stack;
 
 public class Show extends AbstractCommand {
-    public Show() {
-    }
-
     public boolean function() {
         try {
             Stack clone = new Stack();

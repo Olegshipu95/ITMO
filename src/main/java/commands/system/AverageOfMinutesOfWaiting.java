@@ -12,9 +12,6 @@ import entities.HumanBeing;
 import java.util.Stack;
 
 public class AverageOfMinutesOfWaiting extends AbstractCommand {
-    public AverageOfMinutesOfWaiting() {
-    }
-
     public boolean function() {
         try {
             Long sum = 0L;

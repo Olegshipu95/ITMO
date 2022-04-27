@@ -14,9 +14,6 @@ import entities.HumanBeing;
 import java.util.Stack;
 
 public class RemoveById extends AbstractCommand {
-    public RemoveById() {
-    }
-
     public boolean function() {
         System.out.println("Эта команда без аргументов");
         return false;

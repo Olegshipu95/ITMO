@@ -6,8 +6,6 @@
 package commands;
 
 public abstract class AbstractCommand {
-    public AbstractCommand() {
-    }
 
     public abstract boolean function();
 

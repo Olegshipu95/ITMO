@@ -9,9 +9,6 @@ import collections.StackCollection;
 import commands.AbstractCommand;
 
 public class Clear extends AbstractCommand {
-    public Clear() {
-    }
-
     public boolean function() {
         try {
             StackCollection.entitiesCollection.clear();

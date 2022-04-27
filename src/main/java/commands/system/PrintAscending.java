@@ -13,9 +13,6 @@ import java.util.Comparator;
 import java.util.Iterator;
 
 public class PrintAscending extends AbstractCommand {
-    public PrintAscending() {
-    }
-
     public boolean function() {
         try {
             StackCollection.entitiesCollection.sort(new Comparator<HumanBeing>() {

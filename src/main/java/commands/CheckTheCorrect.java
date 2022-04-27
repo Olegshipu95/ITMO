@@ -12,8 +12,6 @@ import entities.WeaponType;
 import java.util.Scanner;
 
 public class CheckTheCorrect {
-    public CheckTheCorrect() {
-    }
 
     public static boolean checkTheCorrect(boolean type) throws StupidUserException {
         while(true) {

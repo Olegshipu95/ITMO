@@ -14,9 +14,6 @@ import entities.HumanBeing;
 import java.util.Stack;
 
 public class RemoveLower extends AbstractCommand {
-    public RemoveLower() {
-    }
-
     public boolean function() {
         System.out.println("This command is not used without arguments");
         return false;

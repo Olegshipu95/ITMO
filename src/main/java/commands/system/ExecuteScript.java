@@ -10,9 +10,6 @@ import collections.JavaIO;
 import commands.AbstractCommand;
 
 public class ExecuteScript extends AbstractCommand {
-    public ExecuteScript() {
-    }
-
     public boolean function() {
         System.out.println("This command is used with arguments.");
         return false;

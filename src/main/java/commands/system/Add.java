@@ -12,9 +12,6 @@ import commands.WriteTheValues;
 import java.util.Arrays;
 
 public class Add extends AbstractCommand {
-    public Add() {
-    }
-
     public boolean function() {
         try {
             String[] local = new String[10];

@@ -9,9 +9,6 @@ public class CommandCollection {
     public static HashMap<String, AbstractCommand> commandColl = new HashMap();
     public static HashMap<String, String> commandInfo = new HashMap();
 
-    public CommandCollection() {
-    }
-
     public static void commandManager() {
         commandColl.put("add", new Add());
         commandColl.put("averageOfMinutes", new AverageOfMinutesOfWaiting());

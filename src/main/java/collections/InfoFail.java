@@ -4,45 +4,43 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class InfoFail {
     public static String info;
-
-    public InfoFail() {
-    }
 
     public static void readFile() {
         String var10000 = (new File("")).getAbsolutePath();
         String outputFileName = var10000 + File.separator + "/src/main/resources/info.txt";
         StringBuilder line = new StringBuilder();
-
+        BufferedReader reader;
+        Scanner scanner = new Scanner(System.in);
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(outputFileName));
-
-            String local;
-            try {
-                while((local = reader.readLine()) != null) {
-                    line.append(local + "\n");
+            reader = new BufferedReader(new FileReader(outputFileName));
+        }catch(IOException e) {
+            System.out.println("Problem with file");
+            while (true) {
+                System.out.print("Please enter the path: ");
+                if (!scanner.hasNext()) {
+                    System.out.println("Wrong input, forced shutdown");
+                    System.exit(1);
                 }
-            } catch (Throwable var6) {
-                try {
-                    reader.close();
-                } catch (Throwable var5) {
-                    var6.addSuppressed(var5);
-                }
-
-                throw var6;
+                outputFileName = scanner.nextLine();
             }
-
-            reader.close();
-        } catch (IOException var7) {
-            System.out.println("Problems with the collection information file");
         }
-
+            String local;
+        try {
+            while ((local = reader.readLine()) != null) {
+                line.append(local + "\n");
+            }
+            reader.close();
+        }
+        catch (IOException e) {
+            System.out.println("Проблемы с файлом");
+        }
         if (line.length() <= 0) {
             System.out.println("Problems with the collection information file");
         }
-
         info = line.toString();
     }
 

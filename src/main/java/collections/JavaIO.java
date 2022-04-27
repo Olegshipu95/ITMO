@@ -18,8 +18,6 @@ import java.util.*;
  * this class is using for communication with files(reading and writing)
  */
 public class JavaIO {
-    public JavaIO() {
-    }
 
     /**
      * this method writes a string to file
@@ -48,7 +46,7 @@ public class JavaIO {
 
     public static void CSVCreateObject() throws StupidUserException {
         Scanner scanner = new Scanner(System.in);
-        String relative = "src\\main\\resources";
+        String relative = (new File("")).getAbsolutePath() + File.separator + "/src/main/resources/text.txt";
         String child = "text2.txt";
         new StringBuilder();
 

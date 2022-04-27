@@ -10,13 +10,11 @@ import collections.JavaIO;
 import collections.StackCollection;
 import commands.AbstractCommand;
 import entities.HumanBeing;
+import jdk.swing.interop.SwingInterOpUtils;
 
 import java.util.Iterator;
 
 public class Save extends AbstractCommand {
-    public Save() {
-    }
-
     public boolean function() {
         try {
             Iterator var1 = StackCollection.entitiesCollection.iterator();
@@ -34,6 +32,7 @@ public class Save extends AbstractCommand {
     }
 
     public boolean function(String[] arguments) {
+        System.out.println("This command is using only with args");
         return false;
     }
 }

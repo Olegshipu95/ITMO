@@ -10,9 +10,6 @@ import commands.AbstractCommand;
 import commands.CheckTheCorrect;
 
 public class RemoveAt extends AbstractCommand {
-    public RemoveAt() {
-    }
-
     public boolean function() {
         System.out.println("This command is not used without arguments");
         return false;
