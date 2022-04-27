@@ -33,62 +33,60 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("For a list of commands, type help");
 
-        while(true) {
-            while(true) {
-                String command;
-                String[] arguments;
-                while(true) {
-                    System.out.print("Please enter the command: ");
-                    if (!scanner.hasNext()) {
-                        System.out.println("Wrong input, forced shutdown");
-                        return;
-                    }
+        while (true) {
+            String command;
+            String[] arguments;
+            while (true) {
+                System.out.print("Please enter the command: ");
+                if (!scanner.hasNext()) {
+                    System.out.println("Wrong input, forced shutdown");
+                    System.exit(1);
+                }
 
-                    String input;
-                    while(true) {
-                        try {
-                            input = scanner.nextLine();
-                            break;
-                        } catch (IllegalStateException var12) {
-                            System.out.print("Incorrect data, please re-enter: ");
-                        }
-                    }
-
-                    input = input.trim();
-                    command = input.split(" ")[0];
-
-                    String strArgs;
+                String input;
+                while (true) {
                     try {
-                        strArgs = input.replaceFirst(command, "").trim();
-                    } catch (PatternSyntaxException var10) {
-                        strArgs = "";
-                    }
-
-                    arguments = strArgs.split(",");
-
-                    try {
-                        if (!keys.contains(command)) {
-                            throw new DoesNotExistException();
-                        }
+                        input = scanner.nextLine();
                         break;
-                    } catch (DoesNotExistException var13) {
-                        System.out.println("The command is not in the list of possible commands, please try again.");
+                    } catch (IllegalStateException var12) {
+                        System.out.print("Incorrect data, please re-enter: ");
                     }
                 }
 
-                if (arguments.length == 1 && arguments[0].isEmpty()) {
-                    if (((AbstractCommand)CommandCollection.commandColl.get(command)).function()) {
-                        System.out.println("The command completed successfully. Hooray!");
-                        HistoryCollection.capacity(command);
-                    } else {
-                        System.out.println("An error occurred while executing the command. Do not judge strictly =(");
+                input = input.trim();
+                command = input.split(" ")[0];
+
+                String strArgs;
+                try {
+                    strArgs = input.replaceFirst(command, "").trim();
+                } catch (PatternSyntaxException var10) {
+                    strArgs = "";
+                }
+
+                arguments = strArgs.split(",");
+
+                try {
+                    if (!keys.contains(command)) {
+                        throw new DoesNotExistException();
                     }
-                } else if (((AbstractCommand)CommandCollection.commandColl.get(command)).function(arguments)) {
+                    break;
+                } catch (DoesNotExistException var13) {
+                    System.out.println("The command is not in the list of possible commands, please try again.");
+                }
+            }
+
+            if (arguments.length == 1 && arguments[0].isEmpty()) {
+                if (((AbstractCommand) CommandCollection.commandColl.get(command)).function()) {
                     System.out.println("The command completed successfully. Hooray!");
                     HistoryCollection.capacity(command);
                 } else {
-                    System.out.println("An error occurred while executing the command. Do not judge strictly =((");
+                    System.out.println("An error occurred while executing the command. Do not judge strictly =(");
                 }
+            } else if (((AbstractCommand) CommandCollection.commandColl.get(command)).function(arguments)) {
+                System.out.println("The command completed successfully. Hooray!");
+                HistoryCollection.capacity(command);
+            } else {
+                System.out.println("An error occurred while executing the command. Do not judge strictly =((");
             }
         }
     }

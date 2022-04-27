@@ -13,8 +13,8 @@ import entities.HumanBeing;
 
 import java.util.Stack;
 
-public class Remove_by_id extends AbstractCommand {
-    public Remove_by_id() {
+public class RemoveById extends AbstractCommand {
+    public RemoveById() {
     }
 
     public boolean function() {

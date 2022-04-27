@@ -9,8 +9,8 @@ import collections.ExecuteFileCollection;
 import collections.JavaIO;
 import commands.AbstractCommand;
 
-public class Execute_script extends AbstractCommand {
-    public Execute_script() {
+public class ExecuteScript extends AbstractCommand {
+    public ExecuteScript() {
     }
 
     public boolean function() {

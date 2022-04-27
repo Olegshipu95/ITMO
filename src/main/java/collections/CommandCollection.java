@@ -16,13 +16,13 @@ public class CommandCollection {
         commandColl.put("add", new Add());
         commandColl.put("averageOfMinutes", new AverageOfMinutesOfWaiting());
         commandColl.put("clear", new Clear());
-        commandColl.put("execute_script", new Execute_script());
+        commandColl.put("execute_script", new ExecuteScript());
         commandColl.put("exit", new Exit());
         commandColl.put("help", new Help());
         commandColl.put("history", new History());
         commandColl.put("info", new Info());
         commandColl.put("printAscending", new PrintAscending());
-        commandColl.put("remove_by_id", new Remove_by_id());
+        commandColl.put("remove_by_id", new RemoveById());
         commandColl.put("remove_at", new RemoveAt());
         commandColl.put("remove_lower", new RemoveLower());
         commandColl.put("save", new Save());
