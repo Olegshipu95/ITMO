@@ -1,22 +1,29 @@
 package collections;
 
+import commands.AbstractCommand;
+import commands.CheckTheCorrect;
 import commands.Command;
 import commands.system.*;
 
 import java.util.HashMap;
 
 public class CommandCollection {
-    public static HashMap<String, Command> commandColl = new HashMap();
-    public static HashMap<String, String> commandInfo = new HashMap();
+    private static CommandCollection instance;
+    private CommandCollection(){}
+    public static synchronized CommandCollection getInstance(){
+        if(instance == null){		//если объект еще не создан
+            instance = new CommandCollection();	//создать новый объект
+        }
+        return instance;		// вернуть ранее созданный объект
+    }
+    public  HashMap<String, AbstractCommand> serverCollection = new HashMap();
+    public  HashMap<String, String> commandsInfo = new HashMap();
 
-    public static void commandManager() {
+    public synchronized static void commandManager() {
+        new Connect();
         new Add();
         new AverageOfMinutesOfWaiting();
         new Clear();
-        new ExecuteScript();
-        new Exit();
-        new Help();
-        new History();
         new Info();
         new PrintAscending();
         new RemoveById();
@@ -27,6 +34,5 @@ public class CommandCollection {
         new SumOfMinutesOfWaiting();
         new UpdateId();
     }
-
 
 }

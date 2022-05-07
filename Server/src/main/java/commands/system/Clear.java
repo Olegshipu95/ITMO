@@ -6,22 +6,24 @@
 package commands.system;
 
 import collections.StackCollection;
-import commands.AbstractCommand;
+import commands.*;
 
-public class Clear extends AbstractCommand {
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import static commands.CommandArgs.NO_ARGS;
+
+public class Clear extends CommandsToCollection {
     public Clear() {
-        super("clear", false, "clear the collection");
+        super("clear", NO_ARGS, "clear the collection");
     }
 
-    public boolean function(String ... args) {
-        if(!checkTypeArgs(args)){
-            System.out.println("This command is using without args so I'll run the program without them");
-        }
+    public ServerResult function(String ... args) {
+
         try {
             StackCollection.entitiesCollection.clear();
-            return true;
+            return new ServerResult(true);
         } catch (Exception var2) {
-            return false;
+            return new ServerResult(false);
         }
     }
 }

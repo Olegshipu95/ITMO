@@ -7,22 +7,23 @@ package commands.system;
 
 import collections.HistoryCollection;
 import commands.AbstractCommand;
+import commands.CommandArgs;
+import commands.CommandsToCollection;
+import commands.Result;
 
-public class History extends AbstractCommand {
+import java.util.ArrayList;
+
+public class History extends CommandsToCollection {
     public History() {
-        super("history", false, "output the last 14 commands (without their arguments)");
+        super("history", CommandArgs.NO_ARGS, "output the last 14 commands (without their arguments)");
     }
 
-    public boolean function(String ... args) {
-        if(!checkTypeArgs(args)){
-            System.out.println("This command is using without args so I'll run the program without them");
-        }
-        try {
+    public Result function(String ... args) {
+
+
             System.out.println(HistoryCollection.historyCollectrion);
-            return true;
-        } catch (Exception var2) {
-            return false;
-        }
+        return new Result(true);
+
     }
 
 

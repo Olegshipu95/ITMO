@@ -6,21 +6,21 @@
 package commands.system;
 
 import collections.StackCollection;
-import commands.AbstractCommand;
+import commands.*;
 import entities.HumanBeing;
 
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.util.ArrayList;
 import java.util.Stack;
 
-public class SumOfMinutesOfWaiting extends AbstractCommand {
+public class SumOfMinutesOfWaiting extends CommandsToCollection {
      public SumOfMinutesOfWaiting() {
-        super("sumOfMinutesOfWaiting", false, "print the sum of the values of the minutes Of Waiting field for all elements of the collection");
+        super("sumOfMinutesOfWaiting", CommandArgs.NO_ARGS, "print the sum of the values of the minutes Of Waiting field for all elements of the collection");
     }
 
-    public boolean function(String ... arguments) {
-        if(!checkTypeArgs(arguments)){
-            System.out.println("This command is using without args so I'll run the program without them");
+    public ServerResult function(String ... arguments) {
 
-        }
         try {
             Long sum = 0L;
             Stack clone = new Stack();
@@ -31,10 +31,11 @@ public class SumOfMinutesOfWaiting extends AbstractCommand {
             }
 
             StackCollection.entitiesCollection = clone;
-            System.out.println("The sum of the minutesOfWaiting field values \u200B\u200Bfor all elements of the collection is" + sum);
-            return true;
+            ArrayList<String> arrayList = new ArrayList<>();
+            arrayList.add("The sum of the minutesOfWaiting field values for all elements of the collection is" + sum);
+            return new ServerResult(arrayList,true);
         } catch (Exception var4) {
-            return false;
+            return new ServerResult(false);
         }
     }
 }

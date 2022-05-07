@@ -5,5 +5,5 @@ package commands;//
 
 public interface Command {
 
-    boolean function(String ... var1);
+    Result function(String ... var1);
 }

@@ -6,35 +6,23 @@
 package commands.system;
 
 import collections.StackCollection;
-import commands.AbstractCommand;
-import commands.CheckTheCorrect;
+import commands.*;
 
-public class RemoveAt extends AbstractCommand {
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+public class RemoveAt extends CommandsToCollection {
     public RemoveAt() {
-        super("remove_at", true, "delete an item located in the specified position of the collection (index)");
+        super("remove_at", CommandArgs.ID_ARGS, "delete an item located in the specified position of the collection (index)");
     }
 
-    public boolean function(String ... arguments) {
-        if(arguments.length > 1) {
-            System.out.println("You should write only id in this command, so take only your 1st entered value");
-        }
-        if(arguments.length == 0){arguments = new String[]{""};
-        }
+    public ServerResult function(String... arguments) {
         try {
-
-            int id = -1;
-            try {
-                id = Integer.parseInt(arguments[0]);
-            } catch (NumberFormatException var4) {
-                System.out.println("Incorrect data entered from file");
-                System.out.println("Enter the id value again");
-                id = CheckTheCorrect.checkTheCorrect(id);
-            }
-
+            int id = Integer.parseInt(arguments[0]);
             StackCollection.entitiesCollection.remove(id);
-            return true;
+            return new ServerResult(true);
         } catch (Exception var5) {
-            return false;
+            return new ServerResult(false);
         }
     }
 }

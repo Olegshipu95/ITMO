@@ -23,7 +23,6 @@ public class HumanBeing {
         this.car = car;
         IdCollection.idCollection.add(id);
         creationDate = LocalDateTime.now();
-        IdCollection.idCollection.add(id);
     }
     public HumanBeing(int id,String name, Coordinates coordinates, LocalDateTime local, boolean realHero,
                       boolean hasToothpick, Float impactSpeed, Integer minutesOfWaiting,WeaponType weaponType, Mood mood, Car car){
@@ -39,7 +38,6 @@ public class HumanBeing {
         this.car = car;
         IdCollection.idCollection.add(id);
         creationDate = local;
-        IdCollection.idCollection.add(id);
     }
     private Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой

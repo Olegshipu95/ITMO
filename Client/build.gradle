@@ -15,7 +15,7 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok:1.18.22'
     implementation 'org.apache.commons:commons-csv:1.9.0'
-
+    implementation project(':common')
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
     testCompileOnly 'org.projectlombok:lombok:1.18.22'

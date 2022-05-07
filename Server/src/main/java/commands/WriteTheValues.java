@@ -3,7 +3,6 @@ package commands;//
 // (powered by FernFlower decompiler)
 //
 
-import Exceptions.StupidUserException;
 import collections.IdCollection;
 import collections.StackCollection;
 import entities.*;
@@ -14,205 +13,32 @@ import java.time.LocalDateTime;
 
 public class WriteTheValues {
 
-    public static boolean createObject(String[] args) throws StupidUserException {
-        int id = IdCollection.createId();
+    public static boolean createObject(String[] args)  {
         Mood mood = null;
         WeaponType weaponType = null;
-
-        String name;
         try {
-            name = String.valueOf(args[0]);
-            if (name == null || name.trim().isEmpty()) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException var22) {
-            System.out.print("Enter a file name: ");
-            name = CheckTheCorrect.checkTheCorrect(new String());
+            System.out.println(args.length);
+            int id = Integer.valueOf(args[0]);
+            String name = String.valueOf(args[1]);
+            Float x = Float.valueOf(args[2]);
+            Integer y = Integer.valueOf(args[3]);
+            boolean realHero = Boolean.valueOf(args[4]);
+            boolean hasToothpick = Boolean.valueOf(args[5]);
+            Float impactSpeed = Float.valueOf(args[6]);
+            Integer minutesOfWait = Integer.valueOf(args[7]);
+            weaponType = WeaponType.valueOf(args[8]);
+            mood = Mood.valueOf(args[9]);
+            boolean cool = Boolean.valueOf(args[10]);
+
+
+            StackCollection.entitiesCollection.push(new HumanBeing(id, name, new Coordinates(x, y), realHero, hasToothpick, impactSpeed, minutesOfWait, weaponType, mood, new Car(cool)));
+            return true;
         }
-
-        Float x;
-        try {
-            x = Float.valueOf(args[1]);
-        } catch (NumberFormatException var21) {
-            System.out.print("Enter a float value for the x coordinate: ");
-            x = CheckTheCorrect.checkTheCorrect(1.1F);
+        catch (NumberFormatException|ArrayIndexOutOfBoundsException e){
+            System.out.println("Incorrect number(or type) of args");
+            return false;
         }
-
-        Integer y;
-        try {
-            y = Integer.valueOf(args[2]);
-        } catch (NumberFormatException var20) {
-            System.out.print("Enter an Integer value for the y coordinate: ");
-            y = CheckTheCorrect.checkTheCorrect(Integer.valueOf(0));
-        }
-
-        boolean realHero;
-        try {
-            if (!args[3].equals("true") && !args[3].equals("false")) {
-                throw new NumberFormatException();
-            }
-
-            realHero = Boolean.valueOf(args[3]);
-        } catch (NumberFormatException var19) {
-            System.out.print("Enter a bool value for realHero: ");
-            realHero = CheckTheCorrect.checkTheCorrect(Boolean.valueOf(false));
-        }
-
-        boolean hasToothpick;
-        try {
-            if (!args[4].equals("true") && !args[4].equals("false")) {
-                throw new NumberFormatException();
-            }
-
-            hasToothpick = Boolean.valueOf(args[4]);
-        } catch (NumberFormatException var18) {
-            System.out.print("Enter a bool value for hasToothpick: ");
-            hasToothpick = CheckTheCorrect.checkTheCorrect(Boolean.valueOf(false));
-        }
-
-        Float impactSpeed;
-        try {
-            impactSpeed = Float.valueOf(args[5]);
-        } catch (NumberFormatException var17) {
-            System.out.print("Enter a float value for impactSpeed: ");
-            impactSpeed = CheckTheCorrect.checkTheCorrect(0.0F);
-        }
-
-        Integer minutesOfWait;
-        try {
-            minutesOfWait = Integer.valueOf(args[6]);
-        } catch (NumberFormatException var16) {
-            System.out.print("Enter an Integer value for the y coordinate: ");
-            minutesOfWait = CheckTheCorrect.checkTheCorrect(Integer.valueOf(0));
-        }
-
-        try {
-            mood = Mood.valueOf(args[8]);
-        } catch (IllegalArgumentException var15) {
-            mood = CheckTheCorrect.checkTheCorrect(mood);
-        }
-
-        try {
-            weaponType = WeaponType.valueOf(args[7]);
-        } catch (IllegalArgumentException var14) {
-            weaponType = CheckTheCorrect.checkTheCorrect(weaponType);
-        }
-
-        boolean cool;
-        try {
-            if (!args[9].equals("true") && !args[9].equals("false")) {
-                throw new NumberFormatException();
-            }
-
-            cool = Boolean.valueOf(args[9]);
-        } catch (NumberFormatException var13) {
-            System.out.print("Enter a bool value for cool: ");
-            cool = CheckTheCorrect.checkTheCorrect(Boolean.valueOf(false));
-        }
-
-        StackCollection.entitiesCollection.push(new HumanBeing(id, name, new Coordinates(x, y), realHero, hasToothpick, impactSpeed, minutesOfWait, weaponType, mood, new Car(cool)));
-        return true;
     }
-
-    public static boolean createObject(String[] args, int id) throws StupidUserException {
-        Mood mood = null;
-        WeaponType weaponType = null;
-
-        String name;
-        try {
-            name = String.valueOf(args[0]);
-            if (name == null || name.trim().isEmpty()) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException var22) {
-            System.out.print("Enter a file name: ");
-            name = CheckTheCorrect.checkTheCorrect(new String());
-        }
-
-        Float x;
-        try {
-            x = Float.valueOf(args[1]);
-        } catch (NumberFormatException var21) {
-            System.out.print("Enter a float value for the x coordinate: ");
-            x = CheckTheCorrect.checkTheCorrect(1.1F);
-        }
-
-        Integer y;
-        try {
-            y = Integer.valueOf(args[2]);
-        } catch (NumberFormatException var20) {
-            System.out.print("Enter an Integer value for the y coordinate: ");
-            y = CheckTheCorrect.checkTheCorrect(Integer.valueOf(0));
-        }
-
-        boolean realHero;
-        try {
-            if (!args[3].equals("true") && !args[3].equals("false")) {
-                throw new NumberFormatException();
-            }
-
-            realHero = Boolean.valueOf(args[3]);
-        } catch (NumberFormatException var19) {
-            System.out.print("Enter a bool value for realHero: ");
-            realHero = CheckTheCorrect.checkTheCorrect(Boolean.valueOf(false));
-        }
-
-        boolean hasToothpick;
-        try {
-            if (!args[4].equals("true") && !args[4].equals("false")) {
-                throw new NumberFormatException();
-            }
-
-            hasToothpick = Boolean.valueOf(args[4]);
-        } catch (NumberFormatException var18) {
-            System.out.print("Enter a bool value for hasToothpick: ");
-            hasToothpick = CheckTheCorrect.checkTheCorrect(Boolean.valueOf(false));
-        }
-
-        Float impactSpeed;
-        try {
-            impactSpeed = Float.valueOf(args[5]);
-        } catch (NumberFormatException var17) {
-            System.out.print("Enter a float value for impactSpeed: ");
-            impactSpeed = CheckTheCorrect.checkTheCorrect(0.0F);
-        }
-
-        Integer minutesOfWait;
-        try {
-            minutesOfWait = Integer.valueOf(args[6]);
-        } catch (NumberFormatException var16) {
-            System.out.print("Enter an Integer value for the y coordinate: ");
-            minutesOfWait = CheckTheCorrect.checkTheCorrect(Integer.valueOf(0));
-        }
-
-        try {
-            mood = Mood.valueOf(args[8]);
-        } catch (IllegalArgumentException var15) {
-            mood = CheckTheCorrect.checkTheCorrect(mood);
-        }
-
-        try {
-            weaponType = WeaponType.valueOf(args[7]);
-        } catch (IllegalArgumentException var14) {
-            weaponType = CheckTheCorrect.checkTheCorrect(weaponType);
-        }
-
-        boolean cool;
-        try {
-            if (!args[9].equals("true") && !args[9].equals("false")) {
-                throw new NumberFormatException();
-            }
-
-            cool = Boolean.valueOf(args[9]);
-        } catch (NumberFormatException var13) {
-            System.out.println("Enter a bool value for cool");
-            cool = CheckTheCorrect.checkTheCorrect(Boolean.valueOf(false));
-        }
-
-        StackCollection.entitiesCollection.push(new HumanBeing(id, name, new Coordinates(x, y), realHero, hasToothpick, impactSpeed, minutesOfWait, weaponType, mood, new Car(cool)));
-        return true;
-    }
-
     public static boolean createObject(CSVRecord arguments) {
         Mood mood = null;
         WeaponType weaponType = null;

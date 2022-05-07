@@ -7,22 +7,21 @@ package commands.system;
 
 import collections.JavaIO;
 import collections.StackCollection;
-import commands.AbstractCommand;
+import commands.*;
 import entities.HumanBeing;
 
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.util.Iterator;
 
-public class Save extends AbstractCommand {
+public class Save extends CommandsToCollection {
     public Save() {
-        super("save", false, "save the collection to a file");
+        super("save", CommandArgs.NO_ARGS, "save the collection to a file");
 
     }
 
-    public boolean function(String ... arguments) {
-        if(!checkTypeArgs(arguments)){
-            System.out.println("This command is using without args so I'll run the program without them");
+    public ServerResult function(String ... arguments) {
 
-        }
         try {
             Iterator var1 = StackCollection.entitiesCollection.iterator();
 
@@ -30,11 +29,10 @@ public class Save extends AbstractCommand {
                 HumanBeing obj = (HumanBeing)var1.next();
                 JavaIO.writeToFile(obj.csvToString() + "\n");
             }
-
-            return true;
+            return new ServerResult(true);
         }
         catch (Exception var3) {
-            return false;
+            return new ServerResult(false);
         }
     }
 

@@ -6,7 +6,7 @@ import java.util.HashSet;
 public class IdCollection {
     public static HashSet<Integer> idCollection = new HashSet();
 
-    public static int createId() {
+    public static Integer createId() {
         int id;
         do {
             Date md = new Date();

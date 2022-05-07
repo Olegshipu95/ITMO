@@ -6,34 +6,36 @@
 package commands.system;
 
 import collections.StackCollection;
-import commands.AbstractCommand;
+import commands.*;
 import entities.HumanBeing;
 
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.util.ArrayList;
 import java.util.Stack;
 
-public class Show extends AbstractCommand {
+public class Show extends CommandsToCollection {
     public Show() {
-        super("show", false, "output to the standard output stream all the elements of the collection in a string representation");
+        super("show", CommandArgs.NO_ARGS, "output to the standard output stream all the elements of the collection in a string representation");
     }
 
-    public boolean function(String ... arguments) {
-        if(!checkTypeArgs(arguments)){
-            System.out.println("This command is using without args so I'll run the program without them");
+    public ServerResult function(String ... arguments) {
 
-        }
         try {
+            ArrayList<String> arrayList = new ArrayList<>();
             Stack clone = new Stack();
 
             while(StackCollection.entitiesCollection.size() > 0) {
                 HumanBeing local = (HumanBeing)StackCollection.entitiesCollection.pop();
-                System.out.println(local.toString());
+                arrayList.add(local.toString());
                 clone.push(local);
             }
 
             StackCollection.entitiesCollection = clone;
-            return true;
+            arrayList.add("Command has successfully done");
+            return new ServerResult(arrayList,true);
         } catch (Exception var3) {
-            return false;
+            return new ServerResult(false);
         }
     }
 

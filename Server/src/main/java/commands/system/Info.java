@@ -7,22 +7,22 @@ package commands.system;
 
 import collections.InfoFail;
 import collections.StackCollection;
-import commands.AbstractCommand;
+import commands.*;
 
-public class Info extends AbstractCommand {
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+public class Info extends CommandsToCollection {
     public Info() {
-        super("info", false, "output information about the collection (type, initialization date, number of items, etc.) to the standard output stream.");
+        super("info", CommandArgs.NO_ARGS, "output information about the collection (type, initialization date, number of items, etc.) to the standard output stream.");
     }
 
-    public boolean function(String ... args) {
-        if(!checkTypeArgs(args)){
-            System.out.println("This command is using without args so I'll run the program without them");
-        }
+    public ServerResult function(String ... args) {
         try {
             System.out.println(InfoFail.infoCol(StackCollection.entitiesCollection.size()));
-            return true;
+            return new ServerResult(true);
         } catch (Exception var2) {
-            return false;
+            return new ServerResult(false);
         }
     }
 

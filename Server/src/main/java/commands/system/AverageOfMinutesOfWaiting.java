@@ -6,20 +6,23 @@
 package commands.system;
 
 import collections.StackCollection;
-import commands.AbstractCommand;
+import commands.*;
 import entities.HumanBeing;
 
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.util.ArrayList;
 import java.util.Stack;
 
-public class AverageOfMinutesOfWaiting extends AbstractCommand {
+import static commands.CommandArgs.NO_ARGS;
+
+public class AverageOfMinutesOfWaiting extends CommandsToCollection {
     public AverageOfMinutesOfWaiting() {
-        super("averageOfMinutes", false, "output the average value of the minutes Of Waiting field for all items in the collection");
+        super("averageOfMinutes", NO_ARGS, "output the average value of the minutes Of Waiting field for all items in the collection");
     }
 
-    public boolean function(String ... arguments) {
-        if(!checkTypeArgs(arguments)){
-            System.out.println("This command is using without args so I'll run the program without them");
-        }
+    public ServerResult function(String ... arguments) {
+
         try {
             Long sum = 0L;
             int longArray = StackCollection.entitiesCollection.size();
@@ -31,10 +34,11 @@ public class AverageOfMinutesOfWaiting extends AbstractCommand {
             }
 
             StackCollection.entitiesCollection = clone;
-            System.out.println("The output of the average value of the minutesOfWaiting field for all elements of the collection is " + sum / (long)longArray);
-            return true;
+            ArrayList<String> arrayList = new ArrayList<>();
+            arrayList.add("The output of the average value of the minutesOfWaiting field for all elements of the collection is " + (sum / (long)longArray));
+            return new ServerResult(arrayList,true);
         } catch (Exception var5) {
-            return false;
+            return new ServerResult(false);
         }
     }
 

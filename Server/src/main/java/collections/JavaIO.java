@@ -1,7 +1,5 @@
 package collections;
 
-
-import Exceptions.StupidUserException;
 import commands.Command;
 import commands.WriteTheValues;
 import org.apache.commons.csv.CSVFormat;
@@ -23,7 +21,7 @@ public class JavaIO {
      * this method writes a string to file
      * @param example
      */
-    public static void writeToFile(String example) throws StupidUserException{
+    public static void writeToFile(String example) {
         String var10002 = (new File("")).getAbsolutePath();
         File file = new File(var10002 + File.separator + "/common/src/main/resources/text.txt");
         Scanner scanner = new Scanner(System.in);
@@ -37,14 +35,14 @@ public class JavaIO {
             } catch (IOException var4) {
                 System.out.println("Problem with the file, please enter a new file");
                 if (!scanner.hasNext()) {
-                    throw new StupidUserException();
+                    System.exit(0);
                 }
                 file = new File(scanner.nextLine());
             }
         }
     }
 
-    public static void CSVCreateObject() throws StupidUserException {
+    public static void CSVCreateObject() {
         Scanner scanner = new Scanner(System.in);
         String relative = (new File("")).getAbsolutePath() + File.separator + "/common/src/main/resources";
         String child = "text2.txt";
@@ -69,7 +67,7 @@ public class JavaIO {
                 System.out.println("There were problems (does not exist or no rights) with the file");
                 System.out.print("Enter the path to the file:");
                 if (!scanner.hasNext()) {
-                    throw new StupidUserException();
+                    System.exit(0);
                 }
 
                 relative = scanner.nextLine();
@@ -80,9 +78,9 @@ public class JavaIO {
         }
     }
 
-    public static boolean readScript(String filepath) {
+    /*public static boolean readScript(String filepath) {
         try {
-            Set keys = CommandCollection.commandColl.keySet();
+            Set keys = CommandCollection.getInstance().commandColl.keySet();
 
             Scanner scanner;
             try {
@@ -105,15 +103,15 @@ public class JavaIO {
                         }
 
                         if (arguments.length == 1 && arguments[0].isEmpty()) {
-                            if (((Command)CommandCollection.commandColl.get(command)).function()) {
+                            if (((Command)CommandCollection.getInstance().commandColl.get(command)).function()) {
                                 System.out.println("Выполнение команды прошло успешно. Ура!");
-                                HistoryCollection.capacity(command);
+                                HistoryCollection.getInstance().capacity(command);
                             } else {
                                 System.out.println("An error occurred while executing the command. Do not judge strictly =(");
                             }
-                        } else if (((Command)CommandCollection.commandColl.get(command)).function(arguments)) {
+                        } else if (((Command)CommandCollection.getInstance().commandColl.get(command)).function(arguments)) {
                             System.out.println("The command completed successfully. Hooray!");
-                            HistoryCollection.capacity(command);
+                            HistoryCollection.getInstance().capacity(command);
                         } else {
                             System.out.println("An error occurred while executing the command. Do not judge strictly =(");
                         }
@@ -129,5 +127,5 @@ public class JavaIO {
         } catch (Exception var10) {
             return false;
         }
-    }
+    }*/
 }
