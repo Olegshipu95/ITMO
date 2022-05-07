@@ -27,6 +27,7 @@ public class Result {
                 message.add("Error in command");
             }
         }
+        this.command=command;
     }
     public Result(HashSet<CommandData> hashSet,boolean command){this.message = message;
      this.hashSet = hashSet;

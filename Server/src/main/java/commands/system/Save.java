@@ -12,6 +12,7 @@ import entities.HumanBeing;
 
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Save extends CommandsToCollection {
@@ -29,7 +30,9 @@ public class Save extends CommandsToCollection {
                 HumanBeing obj = (HumanBeing)var1.next();
                 JavaIO.writeToFile(obj.csvToString() + "\n");
             }
-            return new ServerResult(true);
+            ArrayList<String> arrayList = new ArrayList<>();
+            arrayList.add("Success save in file");
+            return new ServerResult(arrayList,true);
         }
         catch (Exception var3) {
             return new ServerResult(false);

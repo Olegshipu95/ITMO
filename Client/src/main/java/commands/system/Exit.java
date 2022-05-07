@@ -5,10 +5,12 @@
 
 package commands.system;
 
-import commands.AbstractCommand;
-import commands.CommandArgs;
-import commands.CommandsToCollection;
-import commands.Result;
+import clientServer.ConnectWithServer;
+import collections.CommandCollection;
+import commands.*;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class Exit extends CommandsToCollection {
     public Exit() {
@@ -16,8 +18,16 @@ public class Exit extends CommandsToCollection {
     }
 
     public Result function(String ... args) {
-            System.exit(0);
-            return null;
+        DataClients dataClients = new DataClients("save",args);
+        ArrayList<String> arrayList = new ArrayList<>();
+        try {
+            DataServer dataServer = ConnectWithServer.getInstance().connectWithServer(dataClients);
+            System.out.println(dataServer.getMessage());
+        } catch (IOException e) {
+            System.out.println("Trouble with server. Save did not competed");
+        }
+        System.exit(0);
+        return null;
     }
 
 }

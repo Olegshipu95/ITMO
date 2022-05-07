@@ -11,6 +11,7 @@ import commands.*;
 
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.ArrayList;
 
 public class Info extends CommandsToCollection {
     public Info() {
@@ -19,8 +20,9 @@ public class Info extends CommandsToCollection {
 
     public ServerResult function(String ... args) {
         try {
-            System.out.println(InfoFail.infoCol(StackCollection.entitiesCollection.size()));
-            return new ServerResult(true);
+            ArrayList<String> arrayList = new ArrayList<>();
+            arrayList.add(InfoFail.infoCol(StackCollection.entitiesCollection.size()));
+            return new ServerResult(arrayList,true);
         } catch (Exception var2) {
             return new ServerResult(false);
         }

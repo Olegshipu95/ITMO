@@ -20,6 +20,7 @@ public class Connect extends CommandsToCollection {
     public ServerResult function(String... var1) {
         HashSet<CommandData> hashSet = new HashSet<>();
         for (AbstractCommand abstractCommand:CommandCollection.getInstance().serverCollection.values()) {
+            if(abstractCommand.getData().getName().equals("save"))continue;
             hashSet.add(abstractCommand.getData());
         }
         return new ServerResult(hashSet,true);

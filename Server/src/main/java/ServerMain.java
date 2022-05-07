@@ -80,10 +80,11 @@ public class ServerMain {
                     ServerResult result =(ServerResult) CommandCollection.getInstance().serverCollection.get(command).function(arguments);
                     if (!result.isCommand()) {
                         try {
-                            System.out.println("An error occurred while executing the command.");
-                            ArrayList<String> message = new ArrayList<>();
-                            message.add("An error occurred while executing the command.");
-                            ConnectWithClient.sendToClient(new DataServer(message), ds, senderAddress, senderPort);
+                            for (String s:
+                                 result.getMessage()) {
+                                System.out.println(s);
+                            }
+                            ConnectWithClient.sendToClient(result.getDataServer(), ds, senderAddress, senderPort);
                             continue;
                         } catch (IOException e) {
                             System.out.println("Trouble with client");

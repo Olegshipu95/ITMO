@@ -17,7 +17,6 @@ public class WriteTheValues {
         Mood mood = null;
         WeaponType weaponType = null;
         try {
-            System.out.println(args.length);
             int id = Integer.valueOf(args[0]);
             String name = String.valueOf(args[1]);
             Float x = Float.valueOf(args[2]);

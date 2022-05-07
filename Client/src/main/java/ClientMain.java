@@ -26,7 +26,7 @@ public class ClientMain {
                 System.out.print("Please enter the command: ");
                 if (!scanner.hasNext()) {
                     System.out.println("Wrong input, forced shutdown");
-                    System.exit(1);
+                    System.exit(0);
                 }
 
                 String input;
@@ -51,7 +51,7 @@ public class ClientMain {
                 if (CommandCollection.clientCommands.containsKey(command)) {
 
 
-                    result = ((Command) CommandCollection.commandColl.get(command)).function(arguments);
+                    result = (CommandCollection.commandColl.get(command)).function(arguments);
 
                         for (int i = 0; i < result.getMessage().size(); i++) {
                             System.out.println(result.getMessage().get(i));
@@ -67,12 +67,11 @@ public class ClientMain {
                 else {
                     try {
                         try {
-                            arguments = ArgsValidator.argsValidator(CommandCollection.serverCommands.get(command).getCommandArgs(),args);
+                            arguments = ArgsValidator.argsValidator(CommandCollection.serverCommands.get(command).getCommandArgs(),arguments);
                         } catch (IncorrectArgsException e) {
                             System.out.println(e.getMessage());
                             continue;
                         }
-                        System.out.println(arguments.length);
                         DataServer dataServer=ConnectWithServer.getInstance().connectWithServer(new DataClients(command,arguments));
                         for (String s: dataServer.getMessage()) {
                             System.out.println(s);

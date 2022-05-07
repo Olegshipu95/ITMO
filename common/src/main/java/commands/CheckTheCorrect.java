@@ -16,7 +16,7 @@ public class CheckTheCorrect {
 
             try {
                 if (!scanner.hasNext()) {
-                    System.exit(1);
+                    System.exit(0);
                 }
 
                 String local = scanner.next();
@@ -38,7 +38,7 @@ public class CheckTheCorrect {
 
             try {
                 if (!scanner.hasNext()) {
-                    System.exit(1);
+                    System.exit(0);
                 }
 
                 type = Float.valueOf(scanner.next());
@@ -54,7 +54,7 @@ public class CheckTheCorrect {
             Scanner scanner = new Scanner(System.in);
             try {
                 if (!scanner.hasNext()) {
-                    System.exit(1);
+                    System.exit(0);
                 }
 
                 type = Integer.valueOf(scanner.nextLine());
@@ -73,7 +73,7 @@ public class CheckTheCorrect {
 
             try {
                 if (!scanner.hasNext()) {
-                    System.exit(1);
+                    System.exit(0);
                 }
 
                 type = scanner.nextLine();
@@ -133,7 +133,7 @@ public class CheckTheCorrect {
 
                 System.out.println();
                 if (!scanner.hasNext()) {
-                    System.exit(1);
+                    System.exit(0);
                 }
 
                 type = WeaponType.valueOf(scanner.nextLine());
