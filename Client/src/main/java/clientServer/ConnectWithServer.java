@@ -4,6 +4,7 @@ import collections.CommandCollection;
 import collections.HistoryCollection;
 import commands.DataClients;
 import commands.DataServer;
+import lombok.Getter;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -14,6 +15,7 @@ public class ConnectWithServer {
     /* Порт сервера, к которому собирается
   подключиться клиентский сокет */
     private int port;
+    @Getter
     private InetAddress IPAddress;
     private static ConnectWithServer instance;
 
@@ -35,7 +37,6 @@ public class ConnectWithServer {
     public DataServer connectWithServer(DataClients dataClients) throws IOException {
       /* Создайте экземпляр клиентского сокета.
 Нет необходимости в привязке к определенному порту */
-
         DatagramSocket clientSocket = new DatagramSocket();
         try {
             IPAddress = InetAddress.getByName("localhost");
@@ -51,6 +52,8 @@ public class ConnectWithServer {
         // Создайте UDP-пакет
         DatagramPacket sendingPacket = new DatagramPacket(sendingDataBuffer, sendingDataBuffer.length, IPAddress, port);
 
+        DatagramPacket receivingPacket = new DatagramPacket(receivingDataBuffer, receivingDataBuffer.length);
+
         // Отправьте UDP-пакет серверу
         try {
             clientSocket.send(sendingPacket);
@@ -59,7 +62,6 @@ public class ConnectWithServer {
             return null;
         }
         // Получите ответ от сервера, т.е. предложение из заглавных букв
-        DatagramPacket receivingPacket = new DatagramPacket(receivingDataBuffer, receivingDataBuffer.length);
         clientSocket.receive(receivingPacket);
         byte[] byteMessage = receivingPacket.getData();
         DataServer obj;

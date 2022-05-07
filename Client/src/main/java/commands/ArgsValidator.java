@@ -35,7 +35,7 @@ public class ArgsValidator {
                 try {
                     Integer.valueOf(args[0]);
                 } catch (NumberFormatException e) {
-                    System.out.println("Write Id pls");
+                    System.out.print("Write Id pls: ");
                     args[0] = CheckTheCorrect.checkTheCorrect(Integer.valueOf(0)).toString();
                 }
                 args = CheckTheCorrect.fillingArgs(args, 1);
@@ -49,6 +49,12 @@ public class ArgsValidator {
                 }catch (NumberFormatException e){
                     throw new IncorrectArgsException("The second argument must be int");
                 }
+                break;
+            case STRING:
+                if (!(args.length == 1 && !args[0].isEmpty())){
+                    throw new IncorrectArgsException("You must write 1 argument with path");
+                }
+                break;
         }
         return args;
     }

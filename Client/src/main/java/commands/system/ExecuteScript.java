@@ -5,6 +5,7 @@
 
 package commands.system;
 
+import clientServer.ConnectWithServer;
 import collections.ExecuteFileCollection;
 import collections.JavaIO;
 import commands.AbstractCommand;
@@ -20,10 +21,14 @@ public class ExecuteScript extends CommandsToCollection {
     }
 
     public Result function(String ... arguments) {
+        if(ConnectWithServer.getInstance().getIPAddress()==null){
+            System.out.println("You must write \"connect\" before using this command");
+            return new Result(false);
+        }
 
         String filepath = arguments[0];
 
-        /*try {
+        try {
             if (ExecuteFileCollection.executeFileCollection.contains(filepath)) {
                 ArrayList<String> arrayList = new ArrayList<>();
                 arrayList.add("This address has already been used, please use another one");
@@ -33,14 +38,13 @@ public class ExecuteScript extends CommandsToCollection {
                 if (JavaIO.readScript(filepath)) {
                     return new Result(true);
                 } else {
-
                     ArrayList arrayList = new ArrayList<>();
                     arrayList.add("An error occurred during the script");
                     return new Result(arrayList,false);
                 }
             }
-        } catch (Exception var4) {*/
+        } catch (Exception var4) {
             return new Result(false);
-        //}
+        }
     }
 }

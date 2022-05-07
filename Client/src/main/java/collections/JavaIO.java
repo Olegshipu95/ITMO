@@ -1,6 +1,8 @@
 package collections;
 
-import commands.Command;
+import clientServer.ConnectWithServer;
+import commands.*;
+import exceptions.IncorrectArgsException;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -11,12 +13,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.*;
+import java.util.regex.PatternSyntaxException;
+
 /**
  * this class is using for communication with files(reading and writing)
  */
 public class JavaIO {
 
-    /*public static boolean readScript(String filepath) {
+    public static boolean readScript(String filepath) {
         try {
             Set keys = CommandCollection.commandColl.keySet();
 
@@ -28,42 +32,53 @@ public class JavaIO {
                 return false;
             }
 
-            while(scanner.hasNext()) {
+            while (scanner.hasNext()) {
+                String command;
+                String[] arguments;
+                String strArgs;
+                String input = scanner.nextLine().trim();
+                command = input.split(" ")[0];
+                Result result;
                 try {
-                    String input = scanner.nextLine();
+                    strArgs = input.replaceFirst(command, "").trim();
+                } catch (PatternSyntaxException var10) {
+                    strArgs = "";
+                }
+                arguments = strArgs.split(",");
+                System.out.println("Command : ");
+                //Check if command contains in client's module
+                if (CommandCollection.clientCommands.containsKey(command)) {
 
-                    try {
-                        String command = input.split(" ")[0];
-                        String strArgs = input.replaceFirst(command, "").trim();
-                        String[] arguments = strArgs.split(",");
-                        if (!keys.contains(command)) {
-                            throw new IllegalArgumentException();
-                        }
 
-                        if (arguments.length == 1 && arguments[0].isEmpty()) {
-                            if () {
-                                System.out.println("Выполнение команды прошло успешно. Ура!");
-                                HistoryCollection.capacity(command);
-                            } else {
-                                System.out.println("An error occurred while executing the command. Do not judge strictly =(");
-                            }
-                        } else if (((Command)CommandCollection.commandColl.get(command)).function(arguments)) {
-                            System.out.println("The command completed successfully. Hooray!");
-                            HistoryCollection.capacity(command);
-                        } else {
-                            System.out.println("An error occurred while executing the command. Do not judge strictly =(");
-                        }
-                    } catch (IllegalArgumentException var8) {
-                        System.out.println("The command is not in the list of possible commands, please try again.");
+                    result = (CommandCollection.commandColl.get(command)).function(arguments);
+
+                    for (int i = 0; i < result.getMessage().size(); i++) {
+                        System.out.println(result.getMessage().get(i));
                     }
-                } catch (IllegalStateException | NoSuchElementException var9) {
-                    System.out.println("Incorrect data");
+                    HistoryCollection.capacity(command);
+
+                } else if (!CommandCollection.serverCommands.containsKey(command)) {
+                    System.out.println("This command is not in the program, please enter the command again");
+                } else {
+                    try {
+                        try {
+                            arguments = ArgsValidator.argsValidator(CommandCollection.serverCommands.get(command).getCommandArgs(), arguments);
+                        } catch (IncorrectArgsException e) {
+                            System.out.println(e.getMessage());
+                            continue;
+                        }
+                        DataServer dataServer = ConnectWithServer.getInstance().connectWithServer(new DataClients(command, arguments));
+                        for (String s : dataServer.getMessage()) {
+                            System.out.println(s);
+                        }
+                    } catch (IOException e) {
+                        System.out.println("Server is unreachable");
+                    }
                 }
             }
-
             return true;
         } catch (Exception var10) {
             return false;
         }
-    }*/
+    }
 }
