@@ -1,7 +1,4 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
+
 import clientServer.ConnectWithServer;
 import collections.CommandCollection;
 import collections.HistoryCollection;
@@ -34,7 +31,7 @@ public class ClientMain {
                     try {
                         input = scanner.nextLine();
                         break;
-                    } catch (IllegalStateException var12) {
+                    } catch (IllegalStateException e) {
                         System.out.print("Incorrect data, please re-enter: ");
                     }
                 }
@@ -43,7 +40,7 @@ public class ClientMain {
                 Result result;
                 try {
                     strArgs = input.replaceFirst(command, "").trim();
-                } catch (PatternSyntaxException var10) {
+                } catch (PatternSyntaxException e) {
                     strArgs = "";
                 }
                 arguments = strArgs.split(",");

@@ -18,30 +18,25 @@ public class Connect extends CommandsToCollection {
 
     @Override
     public Result function(String... args) {
+        ArrayList<String> arrayList = new ArrayList<>();
         try {
             args = checkTypeArgs(args);
         } catch (IncorrectArgsException e) {
             return new Result(false);
         }
         try {
-            ConnectWithServer.getInstance().setIPAddressAndPort(InetAddress.getByName(args[0]),Integer.valueOf(args[1]));
-        } catch (UnknownHostException e) {
-            ArrayList<String> arrayList = new ArrayList<>();
-            arrayList.add("Data is incorrect, write the command again ");
-            return new Result(arrayList,false);
-        }
-        DataClients dataClients = new DataClients("connect",args);
-        ArrayList<String> arrayList = new ArrayList<>();
+            ConnectWithServer.getInstance().setIPAddressAndPort(InetAddress.getByName(args[0]), Integer.valueOf(args[1]));
+            DataClients dataClients = new DataClients("connect", args);
 
-        try {
             DataServer dataServer = ConnectWithServer.getInstance().connectWithServer(dataClients);
-            for (CommandData commandData:dataServer.getCommandDataHashSet()) {
-                CommandCollection.serverCommands.put(commandData.getName(),commandData);
+            for (CommandData commandData : dataServer.getCommandDataHashSet()) {
+                CommandCollection.serverCommands.put(commandData.getName(), commandData);
             }
         } catch (IOException e) {
+            System.out.println("Troubles with server");
             return new Result(false);
         }
         arrayList.add("Command has done. Update help");
-        return new Result(arrayList,true);
+        return new Result(arrayList, true);
     }
 }

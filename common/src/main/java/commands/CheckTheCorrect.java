@@ -1,7 +1,4 @@
 package commands;//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
 import entities.Mood;
 import entities.WeaponType;
 
@@ -26,7 +23,7 @@ public class CheckTheCorrect {
 
                 type = Boolean.valueOf(local);
                 return type;
-            } catch (Exception var4) {
+            } catch (Exception e) {
                 System.out.print("Incorrect data entered, please re-enter: ");
             }
         }
@@ -43,7 +40,7 @@ public class CheckTheCorrect {
 
                 type = Float.valueOf(scanner.next());
                 return type;
-            } catch (NumberFormatException var4) {
+            } catch (NumberFormatException e) {
                 System.out.print("Incorrect data entered, please re-enter: ");
             }
         }
@@ -58,7 +55,7 @@ public class CheckTheCorrect {
                 }
 
                 type = Integer.valueOf(scanner.nextLine());
-            } catch (NumberFormatException var4) {
+            } catch (NumberFormatException e) {
                 System.out.print("Incorrect data entered, please re-enter: ");
                 continue;
             }
@@ -82,7 +79,7 @@ public class CheckTheCorrect {
                 }
 
                 throw new IllegalArgumentException();
-            } catch (IllegalArgumentException var4) {
+            } catch (IllegalArgumentException e) {
                 System.out.print("Incorrect data entered, please re-enter: ");
             }
         }
@@ -95,14 +92,11 @@ public class CheckTheCorrect {
             try {
                 System.out.println("Введите значение для класса Mood из тех, которые представлены сейчас перед вами: ");
                 Mood[] obj = Mood.values();
-                Mood[] var4 = obj;
-                int var5 = obj.length;
 
-                for(int var6 = 0; var6 < var5; ++var6) {
-                    Mood localObj = var4[var6];
+                for(int i = 0; i < obj.length; ++i) {
+                    Mood localObj = obj[i];
                     System.out.print(localObj + " ");
                 }
-
                 System.out.println();
                 if (!scanner.hasNext()) {
                     System.exit(1);
@@ -110,7 +104,7 @@ public class CheckTheCorrect {
 
                 type = Mood.valueOf(scanner.nextLine());
                 return type;
-            } catch (IllegalArgumentException var8) {
+            } catch (IllegalArgumentException e) {
                 System.out.println("Incorrect data entered, please re-enter: ");
             }
         }
@@ -123,11 +117,9 @@ public class CheckTheCorrect {
             try {
                 System.out.println("Enter a value from those for the WeaponType class that are now in front of you: ");
                 WeaponType[] obj = WeaponType.values();
-                WeaponType[] var4 = obj;
-                int var5 = obj.length;
 
-                for(int var6 = 0; var6 < var5; ++var6) {
-                    WeaponType localObj = var4[var6];
+                for(int i = 0; i < obj.length; ++i) {
+                    WeaponType localObj = obj[i];
                     System.out.print(localObj + " ");
                 }
 
@@ -138,95 +130,91 @@ public class CheckTheCorrect {
 
                 type = WeaponType.valueOf(scanner.nextLine());
                 return type;
-            } catch (IllegalArgumentException var8) {
+            } catch (IllegalArgumentException e) {
                 System.out.println("Incorrect data entered, please re-enter: ");
             }
         }
     }
-    public static String[] fillingArgs(String[] args,int shift){
-        if(shift<0){
-            System.out.println("You write incorrect shift, so then I will make it equal to 0");
-            shift = 0;
-        }
-        if(args.length!=(10 + shift))args = arrayToDesiredSize(args,(10+shift));
+    public static String[] fillingArgs(String[] args){
+        if(args.length!=10)args = arrayToDesiredSize(args,10);
         try {
-            String name = String.valueOf(args[shift]);
+            String name = String.valueOf(args[0]);
             if (name == null || name.trim().isEmpty()) {
                 throw new IllegalArgumentException();
             }
-        } catch (IllegalArgumentException var22) {
+        } catch (IllegalArgumentException e) {
             System.out.print("Enter a file name: ");
-            args[shift] = CheckTheCorrect.checkTheCorrect(new String());
+            args[0] = CheckTheCorrect.checkTheCorrect(new String());
         }
         try {
-            Float.valueOf(args[shift+1]);
-        } catch (NumberFormatException var21) {
+            Float.valueOf(args[1]);
+        } catch (NumberFormatException e) {
             System.out.print("Enter a float value for the x coordinate: ");
-            args[shift+1] = CheckTheCorrect.checkTheCorrect(1.1F).toString();
+            args[1] = CheckTheCorrect.checkTheCorrect(1.1F).toString();
         }
         try {
-            Integer.valueOf(args[shift+2]);
-        } catch (NumberFormatException var20) {
+            Integer.valueOf(args[2]);
+        } catch (NumberFormatException e) {
             System.out.print("Enter an Integer value for the y coordinate: ");
-            args[shift+2] = CheckTheCorrect.checkTheCorrect(Integer.valueOf(0)).toString();
+            args[2] = CheckTheCorrect.checkTheCorrect(Integer.valueOf(0)).toString();
         }
         try {
-            if (!args[shift+3].equals("true") && !args[shift+3].equals("false")) {
+            if (!args[3].equals("true") && !args[3].equals("false")) {
                 throw new NumberFormatException();
             }
-            Boolean.valueOf(args[shift+3]);
-        } catch (NumberFormatException var19) {
+            Boolean.valueOf(args[3]);
+        } catch (NumberFormatException e) {
             System.out.print("Enter a bool value for realHero: ");
-            args[shift+3] = CheckTheCorrect.checkTheCorrect(Boolean.valueOf(false)).toString();
+            args[3] = CheckTheCorrect.checkTheCorrect(Boolean.valueOf(false)).toString();
         }
 
 
         try {
-            if (!args[shift+4].equals("true") && !args[shift+4].equals("false")) {
+            if (!args[4].equals("true") && !args[4].equals("false")) {
                 throw new NumberFormatException();
             }
-            Boolean.valueOf(args[shift+4]);
-        } catch (NumberFormatException var18) {
+            Boolean.valueOf(args[4]);
+        } catch (NumberFormatException e) {
             System.out.print("Enter a bool value for hasToothpick: ");
-            args[shift+4] = CheckTheCorrect.checkTheCorrect(Boolean.valueOf(false)).toString();
+            args[4] = CheckTheCorrect.checkTheCorrect(Boolean.valueOf(false)).toString();
         }
 
 
         try {
-            Float.valueOf(args[shift+5]);
-        } catch (NumberFormatException var17) {
+            Float.valueOf(args[5]);
+        } catch (NumberFormatException e) {
             System.out.print("Enter a float value for impactSpeed: ");
-            args[shift+5] = CheckTheCorrect.checkTheCorrect(0.0F).toString();
+            args[5] = CheckTheCorrect.checkTheCorrect(0.0F).toString();
         }
         try {
-            Integer.valueOf(args[shift+6]);
-        } catch (NumberFormatException var16) {
+            Integer.valueOf(args[6]);
+        } catch (NumberFormatException e) {
             System.out.print("Enter an Integer value for the y coordinate: ");
-            args[shift+6] = CheckTheCorrect.checkTheCorrect(Integer.valueOf(0)).toString();
+            args[6] = CheckTheCorrect.checkTheCorrect(Integer.valueOf(0)).toString();
         }
 
         try {
-            WeaponType.valueOf(args[shift+7]);
-        } catch (IllegalArgumentException var14) {
+            WeaponType.valueOf(args[7]);
+        } catch (IllegalArgumentException e) {
             WeaponType weaponType = null;
-            args[shift+7] = CheckTheCorrect.checkTheCorrect(weaponType).toString();
+            args[7] = CheckTheCorrect.checkTheCorrect(weaponType).toString();
         }
 
         try {
-            Mood.valueOf(args[shift+8]);
-        } catch (IllegalArgumentException var15) {
+            Mood.valueOf(args[8]);
+        } catch (IllegalArgumentException e) {
             Mood mood = null;
-            args[shift+8] = CheckTheCorrect.checkTheCorrect(mood).toString();
+            args[8] = CheckTheCorrect.checkTheCorrect(mood).toString();
         }
 
         try {
-            if (!args[shift+9].equals("true") && !args[shift+9].equals("false")) {
+            if (!args[9].equals("true") && !args[9].equals("false")) {
                 throw new NumberFormatException();
             }
-            args[shift+9] = Boolean.valueOf(args[shift+9]).toString();
-        } catch (NumberFormatException var13) {
+            args[9] = Boolean.valueOf(args[9]).toString();
+        } catch (NumberFormatException e) {
             System.out.print("Enter a bool value for cool: ");
-            args[shift+9]=CheckTheCorrect.checkTheCorrect(Boolean.valueOf(false)).toString();
+            args[9]=CheckTheCorrect.checkTheCorrect(Boolean.valueOf(false)).toString();
         }
         return args;
     }

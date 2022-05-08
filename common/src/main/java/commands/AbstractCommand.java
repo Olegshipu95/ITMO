@@ -1,6 +1,5 @@
 package commands;
 
-import collections.IdCollection;
 import exceptions.IncorrectArgsException;
 import lombok.Getter;
 

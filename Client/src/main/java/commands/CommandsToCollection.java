@@ -5,7 +5,7 @@ import exceptions.IncorrectArgsException;
 
 public abstract class CommandsToCollection extends AbstractCommand {
     @Override
-    public abstract Result function(String... var1) ;
+    public abstract Result function(String... args) ;
 
     public CommandsToCollection(String name, CommandArgs commandArgs, String description) {
         super(name, commandArgs, description);

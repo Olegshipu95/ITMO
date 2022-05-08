@@ -1,7 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
 
 package commands.system;
 
@@ -21,7 +17,7 @@ public class RemoveAt extends CommandsToCollection {
             int id = Integer.parseInt(arguments[0]);
             StackCollection.entitiesCollection.remove(id);
             return new ServerResult(true);
-        } catch (Exception var5) {
+        } catch (Exception e) {
             return new ServerResult(false);
         }
     }

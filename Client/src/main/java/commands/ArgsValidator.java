@@ -3,6 +3,8 @@ package commands;
 import collections.IdCollection;
 import exceptions.IncorrectArgsException;
 
+import java.util.Arrays;
+
 import static commands.CommandArgs.*;
 
 public class ArgsValidator {
@@ -28,7 +30,7 @@ public class ArgsValidator {
             case FILLING_ALL_ARGS_WITHOUT_ID:
                 args = CheckTheCorrect.arrayToDesiredSize(args, 11);
                 args[0] = IdCollection.createId().toString();
-                args = CheckTheCorrect.fillingArgs(args, 1);
+                args = CheckTheCorrect.fillingArgs(Arrays.copyOfRange(args,1,args.length));
                 break;
             case FILLING_ALL_ARGS:
                 args = CheckTheCorrect.arrayToDesiredSize(args, 11);
@@ -38,7 +40,7 @@ public class ArgsValidator {
                     System.out.print("Write Id pls: ");
                     args[0] = CheckTheCorrect.checkTheCorrect(Integer.valueOf(0)).toString();
                 }
-                args = CheckTheCorrect.fillingArgs(args, 1);
+                args = CheckTheCorrect.fillingArgs(Arrays.copyOfRange(args,1,args.length));
                 break;
             case CONNECT_ARGS:
                 if(args.length!=2){

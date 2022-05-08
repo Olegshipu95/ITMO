@@ -1,7 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
 
 package commands.system;
 
@@ -43,7 +39,7 @@ public class ExecuteScript extends CommandsToCollection {
                     return new Result(arrayList,false);
                 }
             }
-        } catch (Exception var4) {
+        } catch (Exception e) {
             return new Result(false);
         }
     }

@@ -1,7 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
 
 package commands.system;
 
@@ -20,19 +16,19 @@ public class Help extends CommandsToCollection {
     }
 
     public Result function(String... args) {
-        Iterator var1 = CommandCollection.clientCommands.entrySet().iterator();
+        Iterator iterator = CommandCollection.clientCommands.entrySet().iterator();
         System.out.println("|.............Client's commands.............|");
-        while (var1.hasNext()) {
-            Entry<String, String> pair = (Entry) var1.next();
+        while (iterator.hasNext()) {
+            Entry<String, String> pair = (Entry) iterator.next();
             String key = (String) pair.getKey();
             String value = (String) pair.getValue();
             System.out.println("|| " + key + " --> " + value);
         }
         if (!CommandCollection.serverCommands.isEmpty()) {
-            Iterator<Entry<String, CommandData>> var2 = CommandCollection.serverCommands.entrySet().iterator();
+            Iterator<Entry<String, CommandData>> iterator2 = CommandCollection.serverCommands.entrySet().iterator();
             System.out.println("|.............Server's commands.............|");
-            while (var2.hasNext()) {
-                Entry<String, CommandData> pair = var2.next();
+            while (iterator2.hasNext()) {
+                Entry<String, CommandData> pair = iterator2.next();
                 String key = pair.getKey();
                 CommandData value = pair.getValue();
                 System.out.println("|| " + key + " --> " + value.getDescription());

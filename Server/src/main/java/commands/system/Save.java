@@ -1,7 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
 
 package commands.system;
 
@@ -24,17 +20,17 @@ public class Save extends CommandsToCollection {
     public ServerResult function(String ... arguments) {
 
         try {
-            Iterator var1 = StackCollection.entitiesCollection.iterator();
+            Iterator iterator = StackCollection.entitiesCollection.iterator();
 
-            while(var1.hasNext()) {
-                HumanBeing obj = (HumanBeing)var1.next();
+            while(iterator.hasNext()) {
+                HumanBeing obj = (HumanBeing)iterator.next();
                 JavaIO.writeToFile(obj.csvToString() + "\n");
             }
             ArrayList<String> arrayList = new ArrayList<>();
             arrayList.add("Success save in file");
             return new ServerResult(arrayList,true);
         }
-        catch (Exception var3) {
+        catch (Exception e) {
             return new ServerResult(false);
         }
     }

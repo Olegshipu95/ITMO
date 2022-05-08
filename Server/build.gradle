@@ -28,11 +28,10 @@ test {
 apply plugin: 'application'
 apply plugin: 'java'
 
-mainClassName = 'Main'
 
 jar {
     manifest {
-        attributes 'Main-Class': 'Main'
+        attributes 'Main-Class': 'ServerMain'
     }
 }
 sourceCompatibility = JavaVersion.VERSION_11

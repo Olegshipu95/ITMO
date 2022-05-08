@@ -17,7 +17,7 @@ public class Connect extends CommandsToCollection {
     }
 
     @Override
-    public ServerResult function(String... var1) {
+    public ServerResult function(String... args) {
         HashSet<CommandData> hashSet = new HashSet<>();
         for (AbstractCommand abstractCommand:CommandCollection.getInstance().serverCollection.values()) {
             if(abstractCommand.getData().getName().equals("save"))continue;

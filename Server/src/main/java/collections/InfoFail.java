@@ -10,8 +10,8 @@ public class InfoFail {
     public static String info;
 
     public static void readFile() {
-        String var10000 = (new File("")).getAbsolutePath();
-        String outputFileName = var10000 + File.separator + "/common/src/main/resources/info.txt";
+        String path = (new File("")).getAbsolutePath();
+        String outputFileName = path + File.separator + "/common/src/main/resources/info.txt";
         StringBuilder line = new StringBuilder();
         BufferedReader reader;
         Scanner scanner = new Scanner(System.in);

@@ -1,7 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
 
 package commands.system;
 
@@ -34,7 +30,7 @@ public class SumOfMinutesOfWaiting extends CommandsToCollection {
             ArrayList<String> arrayList = new ArrayList<>();
             arrayList.add("The sum of the minutesOfWaiting field values for all elements of the collection is" + sum);
             return new ServerResult(arrayList,true);
-        } catch (Exception var4) {
+        } catch (Exception e) {
             return new ServerResult(false);
         }
     }

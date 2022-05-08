@@ -1,7 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
 
 package commands.system;
 
@@ -37,7 +33,7 @@ public class AverageOfMinutesOfWaiting extends CommandsToCollection {
             ArrayList<String> arrayList = new ArrayList<>();
             arrayList.add("The output of the average value of the minutesOfWaiting field for all elements of the collection is " + (sum / (long)longArray));
             return new ServerResult(arrayList,true);
-        } catch (Exception var5) {
+        } catch (Exception e) {
             return new ServerResult(false);
         }
     }

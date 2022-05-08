@@ -1,7 +1,4 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
+
 
 package commands.system;
 
@@ -23,7 +20,7 @@ public class Info extends CommandsToCollection {
             ArrayList<String> arrayList = new ArrayList<>();
             arrayList.add(InfoFail.infoCol(StackCollection.entitiesCollection.size()));
             return new ServerResult(arrayList,true);
-        } catch (Exception var2) {
+        } catch (Exception e) {
             return new ServerResult(false);
         }
     }

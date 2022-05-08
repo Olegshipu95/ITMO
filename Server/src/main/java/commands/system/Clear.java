@@ -1,7 +1,4 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
+
 
 package commands.system;
 
@@ -22,7 +19,7 @@ public class Clear extends CommandsToCollection {
         try {
             StackCollection.entitiesCollection.clear();
             return new ServerResult(true);
-        } catch (Exception var2) {
+        } catch (Exception e) {
             return new ServerResult(false);
         }
     }

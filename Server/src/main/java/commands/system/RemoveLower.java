@@ -1,7 +1,4 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
+
 
 package commands.system;
 
@@ -36,7 +33,7 @@ public class RemoveLower extends CommandsToCollection {
 
             StackCollection.entitiesCollection = clone;
             return new ServerResult(true);
-        } catch (Exception var7) {
+        } catch (Exception e) {
             return new ServerResult(false);
         }
     }

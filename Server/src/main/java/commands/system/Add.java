@@ -1,7 +1,4 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
+
 
 package commands.system;
 
@@ -22,7 +19,7 @@ public class Add extends CommandsToCollection {
             } else {
                 return new ServerResult(false);
             }
-        } catch (Exception var5) {
+        } catch (Exception e) {
             return new ServerResult(false);
         }
     }

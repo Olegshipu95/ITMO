@@ -1,7 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
 
 package commands.system;
 
@@ -34,7 +30,7 @@ public class Show extends CommandsToCollection {
             StackCollection.entitiesCollection = clone;
             arrayList.add("Command has successfully done");
             return new ServerResult(arrayList,true);
-        } catch (Exception var3) {
+        } catch (Exception e) {
             return new ServerResult(false);
         }
     }

@@ -20,8 +20,8 @@ public class JavaIO {
      * @param example
      */
     public static void writeToFile(String example) {
-        String var10002 = (new File("")).getAbsolutePath();
-        File file = new File(var10002 + File.separator + "/common/src/main/resources/text.txt");
+        String path = (new File("")).getAbsolutePath();
+        File file = new File(path + File.separator + "/common/src/main/resources/text.txt");
         Scanner scanner = new Scanner(System.in);
 
         while(true) {
@@ -30,7 +30,7 @@ public class JavaIO {
                 fileOutputStream.write(example.getBytes());
                 fileOutputStream.close();
                 return;
-            } catch (IOException var4) {
+            } catch (IOException e) {
                 System.out.println("Problem with the file, please enter a new file");
                 if (!scanner.hasNext()) {
                     System.exit(0);
@@ -51,17 +51,17 @@ public class JavaIO {
                 File path = new File(relative, child);
                 CSVParser parser = CSVParser.parse(path, Charset.defaultCharset(), CSVFormat.RFC4180);
                 List<CSVRecord> parserlocal = parser.getRecords();
-                Iterator var7 = parserlocal.iterator();
+                Iterator iterator = parserlocal.iterator();
 
-                while(var7.hasNext()) {
-                    CSVRecord record = (CSVRecord)var7.next();
+                while(iterator.hasNext()) {
+                    CSVRecord record = (CSVRecord)iterator.next();
                     if (record.size() == 16) {
                         WriteTheValues.createObject(record);
                     }
                 }
 
                 return;
-            } catch (IOException var9) {
+            } catch (IOException e) {
                 System.out.println("There were problems (does not exist or no rights) with the file");
                 System.out.print("Enter the path to the file:");
                 if (!scanner.hasNext()) {
@@ -83,7 +83,7 @@ public class JavaIO {
             Scanner scanner;
             try {
                 scanner = new Scanner(new File(filepath));
-            } catch (FileNotFoundException var7) {
+            } catch (FileNotFoundException e) {
                 System.out.println("Problems with the file, try the command again");
                 return false;
             }
@@ -113,16 +113,16 @@ public class JavaIO {
                         } else {
                             System.out.println("An error occurred while executing the command. Do not judge strictly =(");
                         }
-                    } catch (IllegalArgumentException var8) {
+                    } catch (IllegalArgumentException e) {
                         System.out.println("The command is not in the list of possible commands, please try again.");
                     }
-                } catch (IllegalStateException | NoSuchElementException var9) {
+                } catch (IllegalStateException | NoSuchElementException e) {
                     System.out.println("Incorrect data");
                 }
             }
 
             return true;
-        } catch (Exception var10) {
+        } catch (Exception e) {
             return false;
         }
     }*/

@@ -1,7 +1,4 @@
 package commands;//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
 
 import collections.IdCollection;
 import collections.StackCollection;
@@ -78,11 +75,9 @@ public class WriteTheValues {
             mood = Mood.valueOf(arguments.get(14));
             weaponType = WeaponType.valueOf(arguments.get(13));
             cool = Boolean.valueOf(arguments.get(15));
-        } catch (NumberFormatException var19) {
+        } catch (IllegalArgumentException e) {
             return false;
-        } catch (IllegalArgumentException var20) {
-            return false;
-        } catch (DateTimeException var21) {
+        } catch (DateTimeException e) {
             return false;
         }
 

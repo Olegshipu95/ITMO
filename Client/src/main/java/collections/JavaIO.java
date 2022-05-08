@@ -27,7 +27,7 @@ public class JavaIO {
             Scanner scanner;
             try {
                 scanner = new Scanner(new File(filepath));
-            } catch (FileNotFoundException var7) {
+            } catch (FileNotFoundException e) {
                 System.out.println("Problems with the file, try the command again");
                 return false;
             }
@@ -41,7 +41,7 @@ public class JavaIO {
                 Result result;
                 try {
                     strArgs = input.replaceFirst(command, "").trim();
-                } catch (PatternSyntaxException var10) {
+                } catch (PatternSyntaxException e) {
                     strArgs = "";
                 }
                 arguments = strArgs.split(",");
@@ -77,7 +77,7 @@ public class JavaIO {
                 }
             }
             return true;
-        } catch (Exception var10) {
+        } catch (Exception e) {
             return false;
         }
     }
