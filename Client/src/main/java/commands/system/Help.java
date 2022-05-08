@@ -16,19 +16,15 @@ public class Help extends CommandsToCollection {
     }
 
     public Result function(String... args) {
-        Iterator iterator = CommandCollection.clientCommands.entrySet().iterator();
         System.out.println("|.............Client's commands.............|");
-        while (iterator.hasNext()) {
-            Entry<String, String> pair = (Entry) iterator.next();
+        for (Entry<String, String> pair : CommandCollection.clientCommands.entrySet()){
             String key = (String) pair.getKey();
             String value = (String) pair.getValue();
             System.out.println("|| " + key + " --> " + value);
         }
         if (!CommandCollection.serverCommands.isEmpty()) {
-            Iterator<Entry<String, CommandData>> iterator2 = CommandCollection.serverCommands.entrySet().iterator();
             System.out.println("|.............Server's commands.............|");
-            while (iterator2.hasNext()) {
-                Entry<String, CommandData> pair = iterator2.next();
+            for (Entry<String, CommandData> pair : CommandCollection.serverCommands.entrySet()){
                 String key = pair.getKey();
                 CommandData value = pair.getValue();
                 System.out.println("|| " + key + " --> " + value.getDescription());

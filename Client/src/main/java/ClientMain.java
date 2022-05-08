@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.regex.PatternSyntaxException;
+
 public class ClientMain {
     public static void main(String[] args) {
         CommandCollection.commandManager();
@@ -19,63 +20,57 @@ public class ClientMain {
             String command;
             String[] arguments;
             String strArgs;
+            System.out.print("Please enter the command: ");
+            if (!scanner.hasNext()) {
+                System.out.println("Wrong input, forced shutdown");
+                System.exit(0);
+            }
+
+            String input;
             while (true) {
-                System.out.print("Please enter the command: ");
-                if (!scanner.hasNext()) {
-                    System.out.println("Wrong input, forced shutdown");
-                    System.exit(0);
-                }
-
-                String input;
-                while (true) {
-                    try {
-                        input = scanner.nextLine();
-                        break;
-                    } catch (IllegalStateException e) {
-                        System.out.print("Incorrect data, please re-enter: ");
-                    }
-                }
-                input = input.trim();
-                command = input.split(" ")[0];
-                Result result;
                 try {
-                    strArgs = input.replaceFirst(command, "").trim();
-                } catch (PatternSyntaxException e) {
-                    strArgs = "";
+                    input = scanner.nextLine();
+                    break;
+                } catch (IllegalStateException e) {
+                    System.out.print("Incorrect data, please re-enter: ");
                 }
-                arguments = strArgs.split(",");
-                //Check if command contains in client's module
-                if (CommandCollection.clientCommands.containsKey(command)) {
+            }
+            input = input.trim();
+            command = input.split(" ")[0];
+            Result result;
+            try {
+                strArgs = input.replaceFirst(command, "").trim();
+            } catch (PatternSyntaxException e) {
+                strArgs = "";
+            }
+            arguments = strArgs.split(",");
+            //Check if command contains in client's module
+            if (CommandCollection.clientCommands.containsKey(command)) {
 
 
-                    result = (CommandCollection.commandColl.get(command)).function(arguments);
+                result = (CommandCollection.commandColl.get(command)).function(arguments);
 
-                        for (int i = 0; i < result.getMessage().size(); i++) {
-                            System.out.println(result.getMessage().get(i));
-                        }
-                        HistoryCollection.capacity(command);
-
+                for (int i = 0; i < result.getMessage().size(); i++) {
+                    System.out.println(result.getMessage().get(i));
                 }
+                HistoryCollection.capacity(command);
 
-
-                else if (!CommandCollection.serverCommands.containsKey(command)){
-                    System.out.println("This command is not in the program, please enter the command again");
-                }
-                else {
+            } else if (!CommandCollection.serverCommands.containsKey(command)) {
+                System.out.println("This command is not in the program, please enter the command again");
+            } else {
+                try {
                     try {
-                        try {
-                            arguments = ArgsValidator.argsValidator(CommandCollection.serverCommands.get(command).getCommandArgs(),arguments);
-                        } catch (IncorrectArgsException e) {
-                            System.out.println(e.getMessage());
-                            continue;
-                        }
-                        DataServer dataServer=ConnectWithServer.getInstance().connectWithServer(new DataClients(command,arguments));
-                        for (String s: dataServer.getMessage()) {
-                            System.out.println(s);
-                        }
-                    } catch (IOException e) {
-                        System.out.println("Server is unreachable");
+                        arguments = ArgsValidator.argsValidator(CommandCollection.serverCommands.get(command).getCommandArgs(), arguments);
+                    } catch (IncorrectArgsException e) {
+                        System.out.println(e.getMessage());
+                        continue;
                     }
+                    DataServer dataServer = ConnectWithServer.getInstance().connectWithServer(new DataClients(command, arguments));
+                    for (String s : dataServer.getMessage()) {
+                        System.out.println(s);
+                    }
+                } catch (IOException e) {
+                    System.out.println("Server is unreachable");
                 }
             }
         }

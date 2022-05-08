@@ -21,7 +21,6 @@ import java.util.regex.PatternSyntaxException;
 public class JavaIO {
 
     public static boolean readScript(String filepath) {
-        try {
             Set keys = CommandCollection.commandColl.keySet();
 
             Scanner scanner;
@@ -77,8 +76,5 @@ public class JavaIO {
                 }
             }
             return true;
-        } catch (Exception e) {
-            return false;
-        }
     }
 }
