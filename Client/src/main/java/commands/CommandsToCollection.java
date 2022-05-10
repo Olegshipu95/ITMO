@@ -9,11 +9,11 @@ public abstract class CommandsToCollection extends AbstractCommand {
 
     public CommandsToCollection(String name, CommandArgs commandArgs, String description) {
         super(name, commandArgs, description);
-        if(!(CommandCollection.commandColl.containsKey(name))){
-            CommandCollection.commandColl.put(name,this);
+        if(!(CommandCollection.getCommandColl().containsKey(name))){
+            CommandCollection.getCommandColl().put(name,this);
         }
-        if(!(CommandCollection.clientCommands.containsKey(name))){
-            CommandCollection.clientCommands.put(name,description);
+        if(!(CommandCollection.getClientCommands().containsKey(name))){
+            CommandCollection.getClientCommands().put(name,description);
         }
 
     }

@@ -21,7 +21,7 @@ import java.util.regex.PatternSyntaxException;
 public class JavaIO {
 
     public static boolean readScript(String filepath) {
-            Set keys = CommandCollection.commandColl.keySet();
+            Set keys = CommandCollection.getCommandColl().keySet();
 
             Scanner scanner;
             try {
@@ -46,22 +46,22 @@ public class JavaIO {
                 arguments = strArgs.split(",");
                 System.out.println("Command : ");
                 //Check if command contains in client's module
-                if (CommandCollection.clientCommands.containsKey(command)) {
+                if (CommandCollection.getClientCommands().containsKey(command)) {
 
 
-                    result = (CommandCollection.commandColl.get(command)).function(arguments);
+                    result = (CommandCollection.getCommandColl().get(command)).function(arguments);
 
                     for (int i = 0; i < result.getMessage().size(); i++) {
                         System.out.println(result.getMessage().get(i));
                     }
                     HistoryCollection.capacity(command);
 
-                } else if (!CommandCollection.serverCommands.containsKey(command)) {
+                } else if (!CommandCollection.getServerCommands().containsKey(command)) {
                     System.out.println("This command is not in the program, please enter the command again");
                 } else {
                     try {
                         try {
-                            arguments = ArgsValidator.argsValidator(CommandCollection.serverCommands.get(command).getCommandArgs(), arguments);
+                            arguments = ArgsValidator.argsValidator(CommandCollection.getServerCommands().get(command).getCommandArgs(), arguments);
                         } catch (IncorrectArgsException e) {
                             System.out.println(e.getMessage());
                             continue;

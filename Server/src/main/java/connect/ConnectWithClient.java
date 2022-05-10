@@ -1,6 +1,5 @@
 package connect;
 
-import collections.HistoryCollection;
 import commands.DataServer;
 
 import java.io.IOException;

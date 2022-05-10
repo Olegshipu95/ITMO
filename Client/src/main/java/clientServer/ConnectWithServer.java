@@ -38,10 +38,11 @@ public class ConnectWithServer {
       /* Создайте экземпляр клиентского сокета.
 Нет необходимости в привязке к определенному порту */
         DatagramSocket clientSocket = new DatagramSocket();
-        try {
-            IPAddress = InetAddress.getByName("localhost");
-        } catch (UnknownHostException e) {
-        }
+//        try {
+//            IPAddress = InetAddress.getByName("localhost");
+//        } catch (UnknownHostException e) {
+//            System.out.println("UnknownHostException");
+//        }
 
         // Создайте соответствующие буферы
         byte[] sendingDataBuffer = dataClients.getBytes();
@@ -57,7 +58,11 @@ public class ConnectWithServer {
         // Отправьте UDP-пакет серверу
         try {
             clientSocket.send(sendingPacket);
-        } catch (IOException e) {
+            clientSocket.setSoTimeout(4000);
+        }catch (SocketTimeoutException e){
+            System.out.println("Server is not available now");
+        }
+        catch (IOException e) {
             System.out.println("Problems with server");
             return null;
         }

@@ -3,12 +3,17 @@ package collections;
 import commands.Command;
 import commands.CommandData;
 import commands.system.*;
+import lombok.Getter;
+
 import java.util.HashMap;
 
 public class CommandCollection {
-    public static HashMap<String, Command> commandColl = new HashMap<>();
-    public static HashMap<String, String> clientCommands = new HashMap<>();
-    public static HashMap<String, CommandData> serverCommands = new HashMap<>();
+    @Getter
+    private static HashMap<String, Command> commandColl = new HashMap<>();
+    @Getter
+    private static HashMap<String, String> clientCommands = new HashMap<>();
+    @Getter
+    private static HashMap<String, CommandData> serverCommands = new HashMap<>();
 
     public static void commandManager() {
         new Exit();

@@ -4,6 +4,7 @@ import commands.AbstractCommand;
 import commands.CheckTheCorrect;
 import commands.Command;
 import commands.system.*;
+import lombok.Getter;
 
 import java.util.HashMap;
 
@@ -16,8 +17,8 @@ public class CommandCollection {
         }
         return instance;		// вернуть ранее созданный объект
     }
-    public  HashMap<String, AbstractCommand> serverCollection = new HashMap();
-    public  HashMap<String, String> commandsInfo = new HashMap();
+    @Getter
+    private HashMap<String, AbstractCommand> serverCollection = new HashMap();
 
     public synchronized static void commandManager() {
         new Connect();

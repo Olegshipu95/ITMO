@@ -32,7 +32,7 @@ public class ServerMain {
         после коннекта юзера будет
          */
 
-            byte[] arr = new byte[8096];
+            byte[] arr = new byte[8192];
             DatagramPacket outputPacket;
             int len = arr.length;
             DatagramSocket ds;
@@ -61,7 +61,7 @@ public class ServerMain {
                 }
                 String command = obj.getCommand();
                 System.out.println("Sent command the client: " + command);
-                if (!CommandCollection.getInstance().serverCollection.containsKey(command)) {
+                if (!CommandCollection.getInstance().getServerCollection().containsKey(command)) {
                     try {
                         ArrayList<String> message = new ArrayList<>();
                         System.out.println("Error!There is not command ");
@@ -73,7 +73,7 @@ public class ServerMain {
                     }
                 } else {
                     String[] arguments = obj.getArgs();
-                    ServerResult result =(ServerResult) CommandCollection.getInstance().serverCollection.get(command).function(arguments);
+                    ServerResult result =(ServerResult) CommandCollection.getInstance().getServerCollection().get(command).function(arguments);
                     if (!result.isCommand()) {
                         try {
                             for (String s:

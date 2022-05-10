@@ -30,7 +30,7 @@ public class Connect extends CommandsToCollection {
 
             DataServer dataServer = ConnectWithServer.getInstance().connectWithServer(dataClients);
             for (CommandData commandData : dataServer.getCommandDataHashSet()) {
-                CommandCollection.serverCommands.put(commandData.getName(), commandData);
+                CommandCollection.getServerCommands().put(commandData.getName(), commandData);
             }
         } catch (IOException e) {
             System.out.println("Troubles with server");

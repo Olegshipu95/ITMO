@@ -21,6 +21,7 @@ public class JavaIO {
      */
     public static void writeToFile(String example) {
         String path = (new File("")).getAbsolutePath();
+        //File file = new File(GetFileFromResources.getInstance().getFilePathToSave("text2.txt"));
         File file = new File(path + File.separator + "/common/src/main/resources/text.txt");
         Scanner scanner = new Scanner(System.in);
 
@@ -42,6 +43,7 @@ public class JavaIO {
 
     public static void CSVCreateObject() {
         Scanner scanner = new Scanner(System.in);
+        //File file = new File(GetFileFromResources.getInstance().getFilePathToSave("text2.txt"));
         String relative = (new File("")).getAbsolutePath() + File.separator + "/common/src/main/resources";
         String child = "text2.txt";
         new StringBuilder();
@@ -75,55 +77,4 @@ public class JavaIO {
             }
         }
     }
-
-    /*public static boolean readScript(String filepath) {
-        try {
-            Set keys = CommandCollection.getInstance().commandColl.keySet();
-
-            Scanner scanner;
-            try {
-                scanner = new Scanner(new File(filepath));
-            } catch (FileNotFoundException e) {
-                System.out.println("Problems with the file, try the command again");
-                return false;
-            }
-
-            while(scanner.hasNext()) {
-                try {
-                    String input = scanner.nextLine();
-
-                    try {
-                        String command = input.split(" ")[0];
-                        String strArgs = input.replaceFirst(command, "").trim();
-                        String[] arguments = strArgs.split(",");
-                        if (!keys.contains(command)) {
-                            throw new IllegalArgumentException();
-                        }
-
-                        if (arguments.length == 1 && arguments[0].isEmpty()) {
-                            if (((Command)CommandCollection.getInstance().commandColl.get(command)).function()) {
-                                System.out.println("Выполнение команды прошло успешно. Ура!");
-                                HistoryCollection.getInstance().capacity(command);
-                            } else {
-                                System.out.println("An error occurred while executing the command. Do not judge strictly =(");
-                            }
-                        } else if (((Command)CommandCollection.getInstance().commandColl.get(command)).function(arguments)) {
-                            System.out.println("The command completed successfully. Hooray!");
-                            HistoryCollection.getInstance().capacity(command);
-                        } else {
-                            System.out.println("An error occurred while executing the command. Do not judge strictly =(");
-                        }
-                    } catch (IllegalArgumentException e) {
-                        System.out.println("The command is not in the list of possible commands, please try again.");
-                    }
-                } catch (IllegalStateException | NoSuchElementException e) {
-                    System.out.println("Incorrect data");
-                }
-            }
-
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }*/
 }

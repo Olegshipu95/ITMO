@@ -45,21 +45,21 @@ public class ClientMain {
             }
             arguments = strArgs.split(",");
             //Check if command contains in client's module
-            if (CommandCollection.clientCommands.containsKey(command)) {
+            if (CommandCollection.getClientCommands().containsKey(command)) {
 
 
-                result = (CommandCollection.commandColl.get(command)).function(arguments);
+                result = (CommandCollection.getCommandColl().get(command)).function(arguments);
 
                 for (int i = 0; i < result.getMessage().size(); i++) {
                     System.out.println(result.getMessage().get(i));
                 }
                 HistoryCollection.capacity(command);
 
-            } else if (!CommandCollection.serverCommands.containsKey(command)) {
+            } else if (!CommandCollection.getServerCommands().containsKey(command)) {
                 System.out.println("This command is not in the program, please enter the command again");
             } else {
                 try {
-                    arguments = ArgsValidator.argsValidator(CommandCollection.serverCommands.get(command).getCommandArgs(), arguments);
+                    arguments = ArgsValidator.argsValidator(CommandCollection.getServerCommands().get(command).getCommandArgs(), arguments);
 
                     DataServer dataServer = ConnectWithServer.getInstance().connectWithServer(new DataClients(command, arguments));
                     for (String s : dataServer.getMessage()) {
