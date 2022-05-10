@@ -69,6 +69,7 @@ public class ClientMain {
                     for (String s : dataServer.getMessage()) {
                         System.out.println(s);
                     }
+                    HistoryCollection.capacity(command);
                 } catch (IOException e) {
                     System.out.println("Server is unreachable");
                 }
