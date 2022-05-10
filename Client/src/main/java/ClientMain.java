@@ -59,17 +59,15 @@ public class ClientMain {
                 System.out.println("This command is not in the program, please enter the command again");
             } else {
                 try {
-                    try {
-                        arguments = ArgsValidator.argsValidator(CommandCollection.serverCommands.get(command).getCommandArgs(), arguments);
-                    } catch (IncorrectArgsException e) {
-                        System.out.println(e.getMessage());
-                        continue;
-                    }
+                    arguments = ArgsValidator.argsValidator(CommandCollection.serverCommands.get(command).getCommandArgs(), arguments);
+
                     DataServer dataServer = ConnectWithServer.getInstance().connectWithServer(new DataClients(command, arguments));
                     for (String s : dataServer.getMessage()) {
                         System.out.println(s);
                     }
                     HistoryCollection.capacity(command);
+                } catch (IncorrectArgsException e) {
+                    System.out.println(e.getMessage());
                 } catch (IOException e) {
                     System.out.println("Server is unreachable");
                 }
