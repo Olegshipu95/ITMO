@@ -44,7 +44,7 @@ public class JavaIO {
                     strArgs = "";
                 }
                 arguments = strArgs.split(",");
-                System.out.println("Command : ");
+                System.out.println("Command : " + command);
                 //Check if command contains in client's module
                 if (CommandCollection.getClientCommands().containsKey(command)) {
 

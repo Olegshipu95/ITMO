@@ -20,9 +20,7 @@ public class JavaIO {
      * @param example
      */
     public static void writeToFile(String example) {
-        String path = (new File("")).getAbsolutePath();
-        //File file = new File(GetFileFromResources.getInstance().getFilePathToSave("text2.txt"));
-        File file = new File(path + File.separator + "/common/src/main/resources/text.txt");
+        File file = new File("/common/src/main/resources/text.txt");
         Scanner scanner = new Scanner(System.in);
 
         while(true) {

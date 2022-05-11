@@ -60,7 +60,7 @@ public class ServerMain {
                     continue;
                 }
                 String command = obj.getCommand();
-                System.out.println("Sent command the client: " + command);
+                System.out.println("Sent command from client is:" + command);
                 if (!CommandCollection.getInstance().getServerCollection().containsKey(command)) {
                     try {
                         ArrayList<String> message = new ArrayList<>();
@@ -91,7 +91,7 @@ public class ServerMain {
                         try {
 
                             ConnectWithClient.sendToClient(result.getDataServer(), ds, senderAddress, senderPort);
-                            System.out.println("Command " + command + " has successfully done");
+                            System.out.println("Command " + command + " has successfully done ");
                         } catch (IOException ex) {
                             System.out.println("Trouble with client");
                             continue;

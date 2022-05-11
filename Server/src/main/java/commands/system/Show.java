@@ -20,7 +20,6 @@ public class Show extends CommandsToCollection {
         try {
             ArrayList<String> arrayList = new ArrayList<>();
             Stack clone = new Stack();
-
             while(StackCollection.entitiesCollection.size() > 0) {
                 HumanBeing local = (HumanBeing)StackCollection.entitiesCollection.pop();
                 arrayList.add(local.toString());

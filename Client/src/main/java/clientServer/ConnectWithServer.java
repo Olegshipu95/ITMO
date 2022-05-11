@@ -58,7 +58,7 @@ public class ConnectWithServer {
         // Отправьте UDP-пакет серверу
         try {
             clientSocket.send(sendingPacket);
-            clientSocket.setSoTimeout(4000);
+            clientSocket.setSoTimeout(5000);
         }catch (SocketTimeoutException e){
             System.out.println("Server is not available now");
         }
