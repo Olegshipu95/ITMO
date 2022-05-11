@@ -10,6 +10,8 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.*;
+import java.nio.ByteBuffer;
+import java.nio.channels.DatagramChannel;
 
 public class ConnectWithServer {
     /* Порт сервера, к которому собирается
@@ -51,14 +53,22 @@ public class ConnectWithServer {
        и разместите в буферах */
 
         // Создайте UDP-пакет
+        SocketAddress host2 = new InetSocketAddress(IPAddress,port);
+        DatagramChannel datagramChannel = DatagramChannel.open();
+        ByteBuffer buf ;
+        buf= ByteBuffer.wrap(sendingDataBuffer);
         DatagramPacket sendingPacket = new DatagramPacket(sendingDataBuffer, sendingDataBuffer.length, IPAddress, port);
 
         DatagramPacket receivingPacket = new DatagramPacket(receivingDataBuffer, receivingDataBuffer.length);
 
         // Отправьте UDP-пакет серверу
         try {
-            clientSocket.send(sendingPacket);
-            clientSocket.setSoTimeout(5000);
+            datagramChannel.send(buf, host2);
+            if(!datagramChannel.isConnected()){
+                System.out.println("Server is not available now");
+                return null;
+            }
+//            datagramChannel.setSoTimeout(5000);
         }catch (SocketTimeoutException e){
             System.out.println("Server is not available now");
         }
@@ -67,8 +77,10 @@ public class ConnectWithServer {
             return null;
         }
         // Получите ответ от сервера, т.е. предложение из заглавных букв
-        clientSocket.receive(receivingPacket);
-        byte[] byteMessage = receivingPacket.getData();
+        buf.clear();
+        buf = ByteBuffer.allocate(8192);
+        host2 = datagramChannel.receive(buf);
+        byte[] byteMessage = buf.array();
         DataServer obj;
         try {
             ObjectInputStream inputStream = new ObjectInputStream(new ByteArrayInputStream(byteMessage));

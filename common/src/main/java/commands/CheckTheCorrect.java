@@ -21,7 +21,7 @@ public class CheckTheCorrect {
                     throw new NumberFormatException();
                 }
 
-                type = Boolean.valueOf(local);
+                type = Boolean.parseBoolean(local);
                 return type;
             } catch (Exception e) {
                 System.out.print("Incorrect data entered, please re-enter: ");
@@ -54,7 +54,7 @@ public class CheckTheCorrect {
                     System.exit(0);
                 }
 
-                type = Integer.valueOf(scanner.nextLine());
+                type = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.out.print("Incorrect data entered, please re-enter: ");
                 continue;
@@ -143,8 +143,8 @@ public class CheckTheCorrect {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
-            System.out.print("Enter a file name: ");
-            args[0] = CheckTheCorrect.checkTheCorrect(new String());
+            System.out.print("Enter an Object name: ");
+            args[0] = CheckTheCorrect.checkTheCorrect("");
         }
         try {
             Float.valueOf(args[1]);

@@ -9,7 +9,10 @@ import entities.HumanBeing;
 
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class RemoveById extends CommandsToCollection {
     public RemoveById() {
@@ -20,15 +23,18 @@ public class RemoveById extends CommandsToCollection {
         int id = Integer.parseInt(arguments[0]);
 
         Stack clone = new Stack();
+        //StackCollection.getEntitiesCollection().removeIf(x -> x.getId()==id);
+        List<HumanBeing> list = StackCollection.getEntitiesCollection().stream().filter(x->x.getId()==id).collect(Collectors.toCollection(ArrayList::new));
+        StackCollection.getEntitiesCollection().removeAll(list);
+        StackCollection.getEntitiesCollection().stream().max()
+//        while (StackCollection.entitiesCollection.size() > 0) {
+//            HumanBeing lol;
+//            if (id != (lol = (HumanBeing) StackCollection.entitiesCollection.pop()).getId()) {
+//                clone.push(lol);
+//            }
+//        }
 
-        while (StackCollection.entitiesCollection.size() > 0) {
-            HumanBeing lol;
-            if (id != (lol = (HumanBeing) StackCollection.entitiesCollection.pop()).getId()) {
-                clone.push(lol);
-            }
-        }
-
-        StackCollection.entitiesCollection = clone;
+        //StackCollection.entitiesCollection = clone;
         return new ServerResult(true);
     }
 }

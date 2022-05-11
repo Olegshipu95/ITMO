@@ -48,7 +48,11 @@ public class ClientMain {
             if (CommandCollection.getClientCommands().containsKey(command)) {
 
 
-                result = (CommandCollection.getCommandColl().get(command)).function(arguments);
+                try {
+                    result = (CommandCollection.getCommandColl().get(command)).function(arguments);
+                } catch (NullPointerException e) {
+                    continue;
+                }
 
                 for (int i = 0; i < result.getMessage().size(); i++) {
                     System.out.println(result.getMessage().get(i));
