@@ -26,7 +26,6 @@ public class RemoveById extends CommandsToCollection {
         //StackCollection.getEntitiesCollection().removeIf(x -> x.getId()==id);
         List<HumanBeing> list = StackCollection.getEntitiesCollection().stream().filter(x->x.getId()==id).collect(Collectors.toCollection(ArrayList::new));
         StackCollection.getEntitiesCollection().removeAll(list);
-        StackCollection.getEntitiesCollection().stream().max()
 //        while (StackCollection.entitiesCollection.size() > 0) {
 //            HumanBeing lol;
 //            if (id != (lol = (HumanBeing) StackCollection.entitiesCollection.pop()).getId()) {
