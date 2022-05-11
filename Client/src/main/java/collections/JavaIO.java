@@ -21,60 +21,58 @@ import java.util.regex.PatternSyntaxException;
 public class JavaIO {
 
     public static boolean readScript(String filepath) {
-            Set keys = CommandCollection.getCommandColl().keySet();
+        Set keys = CommandCollection.getCommandColl().keySet();
 
-            Scanner scanner;
+        Scanner scanner;
+        try {
+            scanner = new Scanner(new File(filepath));
+        } catch (FileNotFoundException e) {
+            System.out.println("Problems with the file, try the command again");
+            return false;
+        }
+
+        while (scanner.hasNext()) {
+            String command;
+            String[] arguments;
+            String strArgs;
+            String input = scanner.nextLine().trim();
+            command = input.split(" ")[0];
+            Result result;
             try {
-                scanner = new Scanner(new File(filepath));
-            } catch (FileNotFoundException e) {
-                System.out.println("Problems with the file, try the command again");
-                return false;
+                strArgs = input.replaceFirst(command, "").trim();
+            } catch (PatternSyntaxException e) {
+                strArgs = "";
             }
+            arguments = strArgs.split(",");
+            System.out.println("Command : " + command);
+            //Check if command contains in client's module
+            if (CommandCollection.getClientCommands().containsKey(command)) {
 
-            while (scanner.hasNext()) {
-                String command;
-                String[] arguments;
-                String strArgs;
-                String input = scanner.nextLine().trim();
-                command = input.split(" ")[0];
-                Result result;
+
+                result = (CommandCollection.getCommandColl().get(command)).function(arguments);
+
+                for (int i = 0; i < result.getMessage().size(); i++) {
+                    System.out.println(result.getMessage().get(i));
+                }
+                HistoryCollection.capacity(command);
+
+            } else if (!CommandCollection.getServerCommands().containsKey(command)) {
+                System.out.println("This command is not in the program, please enter the command again");
+            } else {
                 try {
-                    strArgs = input.replaceFirst(command, "").trim();
-                } catch (PatternSyntaxException e) {
-                    strArgs = "";
+                    arguments = ArgsValidator.argsValidator(CommandCollection.getServerCommands().get(command).getCommandArgs(), arguments);
+                DataServer dataServer = ConnectWithServer.getInstance().connectWithServer(new DataClients(command, arguments));
+                for (String s : dataServer.getMessage()) {
+                    System.out.println(s);
                 }
-                arguments = strArgs.split(",");
-                System.out.println("Command : " + command);
-                //Check if command contains in client's module
-                if (CommandCollection.getClientCommands().containsKey(command)) {
+            } catch(IncorrectArgsException e){
+                System.out.println(e.getMessage());
 
-
-                    result = (CommandCollection.getCommandColl().get(command)).function(arguments);
-
-                    for (int i = 0; i < result.getMessage().size(); i++) {
-                        System.out.println(result.getMessage().get(i));
-                    }
-                    HistoryCollection.capacity(command);
-
-                } else if (!CommandCollection.getServerCommands().containsKey(command)) {
-                    System.out.println("This command is not in the program, please enter the command again");
-                } else {
-                    try {
-                        try {
-                            arguments = ArgsValidator.argsValidator(CommandCollection.getServerCommands().get(command).getCommandArgs(), arguments);
-                        } catch (IncorrectArgsException e) {
-                            System.out.println(e.getMessage());
-                            continue;
-                        }
-                        DataServer dataServer = ConnectWithServer.getInstance().connectWithServer(new DataClients(command, arguments));
-                        for (String s : dataServer.getMessage()) {
-                            System.out.println(s);
-                        }
-                    } catch (IOException e) {
-                        System.out.println("Server is unreachable");
-                    }
-                }
+            } catch(IOException e){
+                System.out.println("Server is unreachable");
             }
-            return true;
+        }
     }
+            return true;
+}
 }
