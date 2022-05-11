@@ -42,7 +42,7 @@ public class JavaIO {
     public static void CSVCreateObject() {
         Scanner scanner = new Scanner(System.in);
         //File file = new File(GetFileFromResources.getInstance().getFilePathToSave("text2.txt"));
-        String relative = ("/common/src/main/resources");
+        String relative = (new File("")).getAbsolutePath() + File.separator + "/common/src/main/resources";
         String child = "text2.txt";
         new StringBuilder();
 

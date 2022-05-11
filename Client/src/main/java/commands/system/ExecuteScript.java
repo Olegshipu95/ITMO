@@ -25,12 +25,12 @@ public class ExecuteScript extends CommandsToCollection {
         String filepath = arguments[0];
 
         try {
-            if (ExecuteFileCollection.executeFileCollection.contains(filepath)) {
+            if (ExecuteFileCollection.getExecuteFileCollection().contains(filepath)) {
                 ArrayList<String> arrayList = new ArrayList<>();
                 arrayList.add("This address has already been used, please use another one");
                 return new Result(arrayList,false);
             } else {
-                ExecuteFileCollection.executeFileCollection.add(filepath);
+                ExecuteFileCollection.getExecuteFileCollection().add(filepath);
                 if (JavaIO.readScript(filepath)) {
                     return new Result(true);
                 } else {
